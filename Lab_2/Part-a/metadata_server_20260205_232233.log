@@ -1,0 +1,40 @@
+2026-02-05 23:22:33,391 - MetadataServer - INFO - Metadata Server started on 10.81.1.104:5000
+2026-02-05 23:22:33,391 - MetadataServer - INFO - Managing 4 storage servers
+2026-02-05 23:27:17,737 - MetadataServer - INFO - Received request from ('10.81.32.46', 51365): LIST_FILES
+2026-02-05 23:27:17,737 - MetadataServer - INFO - List files request - 0 files
+2026-02-05 23:27:37,097 - MetadataServer - INFO - Received request from ('10.81.32.46', 51367): UPLOAD_REQUEST
+2026-02-05 23:27:37,097 - MetadataServer - INFO - Upload request for check.png (19784 bytes, 1 chunks)
+2026-02-05 23:27:37,097 - MetadataServer - INFO -   Chunk 0 -> storage_1
+2026-02-05 23:27:37,164 - MetadataServer - INFO - Received request from ('10.81.32.46', 51369): UPLOAD_COMPLETE
+2026-02-05 23:27:37,164 - MetadataServer - INFO - Upload complete for check.png - 1 chunks, 19784 bytes
+2026-02-05 23:27:39,074 - MetadataServer - INFO - Received request from ('10.81.32.46', 51370): LIST_FILES
+2026-02-05 23:27:39,075 - MetadataServer - INFO - List files request - 1 files
+2026-02-05 23:27:48,360 - MetadataServer - INFO - Received request from ('10.81.32.46', 51371): DOWNLOAD_REQUEST
+2026-02-05 23:27:48,361 - MetadataServer - INFO - Download request for check.png - 1 chunks
+2026-02-05 23:28:45,281 - MetadataServer - INFO - Received request from ('10.81.32.46', 51375): UPLOAD_REQUEST
+2026-02-05 23:28:45,281 - MetadataServer - INFO - Upload request for check.png (19784 bytes, 1 chunks)
+2026-02-05 23:28:45,281 - MetadataServer - INFO -   Chunk 0 -> storage_2
+2026-02-05 23:28:45,320 - MetadataServer - INFO - Received request from ('10.81.32.46', 51377): UPLOAD_COMPLETE
+2026-02-05 23:28:45,320 - MetadataServer - INFO - Upload complete for check.png - 1 chunks, 19784 bytes
+2026-02-05 23:28:49,934 - MetadataServer - INFO - Received request from ('10.81.32.46', 51379): LIST_FILES
+2026-02-05 23:28:49,934 - MetadataServer - INFO - List files request - 1 files
+2026-02-05 23:31:04,058 - MetadataServer - INFO - Received request from ('10.81.32.46', 51385): UPLOAD_REQUEST
+2026-02-05 23:33:06,074 - MetadataServer - INFO - Received request from ('10.81.32.46', 51409): LIST_FILES
+2026-02-05 23:33:06,075 - MetadataServer - INFO - List files request - 1 files
+2026-02-05 23:34:10,285 - MetadataServer - INFO - Received request from ('10.81.32.46', 51414): UPLOAD_REQUEST
+2026-02-05 23:34:10,285 - MetadataServer - INFO - Upload request for 12IJRT_Aourangabad_ISB.pdf (8180806 bytes, 8 chunks)
+2026-02-05 23:34:10,285 - MetadataServer - INFO -   Chunk 0 -> storage_4
+2026-02-05 23:34:10,285 - MetadataServer - INFO -   Chunk 1 -> storage_1
+2026-02-05 23:34:10,285 - MetadataServer - INFO -   Chunk 2 -> storage_2
+2026-02-05 23:34:10,285 - MetadataServer - INFO -   Chunk 3 -> storage_3
+2026-02-05 23:34:10,285 - MetadataServer - INFO -   Chunk 4 -> storage_4
+2026-02-05 23:34:10,285 - MetadataServer - INFO -   Chunk 5 -> storage_1
+2026-02-05 23:34:10,285 - MetadataServer - INFO -   Chunk 6 -> storage_2
+2026-02-05 23:34:10,286 - MetadataServer - INFO -   Chunk 7 -> storage_3
+2026-02-05 23:34:11,184 - MetadataServer - INFO - Received request from ('10.81.32.46', 51423): UPLOAD_COMPLETE
+2026-02-05 23:34:11,185 - MetadataServer - INFO - Upload complete for 12IJRT_Aourangabad_ISB.pdf - 8 chunks, 8180806 bytes
+2026-02-05 23:34:16,825 - MetadataServer - INFO - Received request from ('10.81.32.46', 51425): LIST_FILES
+2026-02-05 23:34:16,825 - MetadataServer - INFO - List files request - 2 files
+2026-02-05 23:34:55,655 - MetadataServer - INFO - Received request from ('10.81.32.46', 51428): DOWNLOAD_REQUEST
+2026-02-05 23:34:55,655 - MetadataServer - INFO - Download request for 12IJRT_Aourangabad_ISB.pdf - 8 chunks
+2026-02-05 23:35:09,118 - MetadataServer - INFO - Metadata Server shutting down...

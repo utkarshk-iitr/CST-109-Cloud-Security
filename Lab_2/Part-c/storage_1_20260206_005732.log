@@ -1,0 +1,15 @@
+2026-02-06 00:57:32,439 - StorageServer-storage_1 - INFO - Storage Server 'storage_1' started on 10.81.1.104:6001
+2026-02-06 00:57:32,439 - StorageServer-storage_1 - INFO - Storage directory: storage_1
+2026-02-06 00:57:32,439 - StorageServer-storage_1 - INFO - Replication enabled (factor: 3)
+2026-02-06 00:57:32,439 - StorageServer-storage_1 - INFO - Fault tolerance enabled
+2026-02-06 01:00:30,354 - StorageServer-storage_1 - INFO - Request #19 from ('10.81.32.46', 52542): STORE_CHUNK
+2026-02-06 01:00:30,379 - StorageServer-storage_1 - INFO - Stored REPLICA chunk 0 of draw.png (24285 bytes)
+2026-02-06 01:02:57,088 - StorageServer-storage_1 - INFO - Request #34 from ('10.81.32.46', 52558): STORE_CHUNK
+2026-02-06 01:02:57,904 - StorageServer-storage_1 - INFO - Stored PRIMARY chunk 0 of Group_4.pdf (1032565 bytes)
+2026-02-06 01:03:30,157 - StorageServer-storage_1 - INFO - Request #39 from ('10.81.32.46', 52563): RETRIEVE_CHUNK
+2026-02-06 01:03:30,220 - StorageServer-storage_1 - INFO - Sent chunk 0 of Group_4.pdf (1032565 bytes)
+2026-02-06 01:03:57,192 - StorageServer-storage_1 - INFO - Storage Server 'storage_1' shutting down...
+2026-02-06 01:03:57,192 - StorageServer-storage_1 - INFO - Total requests served: 41
+2026-02-06 01:03:57,192 - StorageServer-storage_1 - INFO -   Store operations: 2
+2026-02-06 01:03:57,192 - StorageServer-storage_1 - INFO -   Retrieve operations: 1
+2026-02-06 01:03:57,192 - StorageServer-storage_1 - INFO -   Health checks: 38

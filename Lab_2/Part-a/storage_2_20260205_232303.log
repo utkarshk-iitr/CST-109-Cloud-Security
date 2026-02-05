@@ -1,0 +1,20 @@
+2026-02-05 23:23:03,973 - StorageServer-storage_2 - INFO - Storage Server 'storage_2' started on 10.81.1.104:6002
+2026-02-05 23:23:03,973 - StorageServer-storage_2 - INFO - Storage directory: storage_2
+2026-02-05 23:28:45,293 - StorageServer-storage_2 - INFO - Request #1 from ('10.81.32.46', 51376): STORE_CHUNK
+2026-02-05 23:28:45,309 - StorageServer-storage_2 - INFO - Stored chunk 0 of check.png (19784 bytes)
+2026-02-05 23:32:32,977 - StorageServer-storage_2 - INFO - Request #2 from ('10.81.32.46', 51394): STORE_CHUNK
+2026-02-05 23:32:33,082 - StorageServer-storage_2 - INFO - Stored chunk 3 of Introduction-to-Operations-Research-Hillier-Lieberman.pdf (1048576 bytes)
+2026-02-05 23:32:33,425 - StorageServer-storage_2 - INFO - Request #3 from ('10.81.32.46', 51398): STORE_CHUNK
+2026-02-05 23:32:33,526 - StorageServer-storage_2 - INFO - Stored chunk 7 of Introduction-to-Operations-Research-Hillier-Lieberman.pdf (1048576 bytes)
+2026-02-05 23:32:33,662 - StorageServer-storage_2 - INFO - Request #4 from ('10.81.32.46', 51403): STORE_CHUNK
+2026-02-05 23:32:33,757 - StorageServer-storage_2 - INFO - Stored chunk 11 of Introduction-to-Operations-Research-Hillier-Lieberman.pdf (1048576 bytes)
+2026-02-05 23:34:10,469 - StorageServer-storage_2 - INFO - Request #5 from ('10.81.32.46', 51417): STORE_CHUNK
+2026-02-05 23:34:10,673 - StorageServer-storage_2 - INFO - Stored chunk 2 of 12IJRT_Aourangabad_ISB.pdf (1048576 bytes)
+2026-02-05 23:34:11,009 - StorageServer-storage_2 - INFO - Request #6 from ('10.81.32.46', 51421): STORE_CHUNK
+2026-02-05 23:34:11,162 - StorageServer-storage_2 - INFO - Stored chunk 6 of 12IJRT_Aourangabad_ISB.pdf (1048576 bytes)
+2026-02-05 23:34:55,760 - StorageServer-storage_2 - INFO - Request #7 from ('10.81.32.46', 51432): RETRIEVE_CHUNK
+2026-02-05 23:34:55,807 - StorageServer-storage_2 - INFO - Sent chunk 2 of 12IJRT_Aourangabad_ISB.pdf (1048576 bytes)
+2026-02-05 23:34:56,268 - StorageServer-storage_2 - INFO - Request #8 from ('10.81.32.46', 51437): RETRIEVE_CHUNK
+2026-02-05 23:34:56,310 - StorageServer-storage_2 - INFO - Sent chunk 6 of 12IJRT_Aourangabad_ISB.pdf (1048576 bytes)
+2026-02-05 23:35:11,774 - StorageServer-storage_2 - INFO - Storage Server 'storage_2' shutting down...
+2026-02-05 23:35:11,774 - StorageServer-storage_2 - INFO - Total requests served: 8

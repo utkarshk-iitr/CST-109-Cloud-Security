@@ -1,0 +1,17 @@
+2026-02-06 00:19:22,550 - StorageServer-storage_4 - INFO - Storage Server 'storage_4' started on 10.81.32.46:6004
+2026-02-06 00:19:22,550 - StorageServer-storage_4 - INFO - Storage directory: storage_4
+2026-02-06 00:19:22,550 - StorageServer-storage_4 - INFO - Replication enabled (factor: 3)
+2026-02-06 00:20:16,091 - StorageServer-storage_4 - INFO - Request #1 from ('10.81.32.46', 52112): STORE_CHUNK
+2026-02-06 00:20:16,097 - StorageServer-storage_4 - INFO - Stored REPLICA chunk 0 of AIPS94-037.pdf (669139 bytes)
+2026-02-06 00:22:49,986 - StorageServer-storage_4 - INFO - Request #2 from ('10.81.32.46', 52140): STORE_CHUNK
+2026-02-06 00:22:50,000 - StorageServer-storage_4 - INFO - Stored PRIMARY chunk 0 of Adesh Palkar.JPG (1048576 bytes)
+2026-02-06 00:22:50,433 - StorageServer-storage_4 - INFO - Request #3 from ('10.81.32.46', 52143): STORE_CHUNK
+2026-02-06 00:22:50,447 - StorageServer-storage_4 - INFO - Stored PRIMARY chunk 1 of Adesh Palkar.JPG (1048576 bytes)
+2026-02-06 00:22:50,762 - StorageServer-storage_4 - INFO - Request #4 from ('10.81.32.46', 52146): STORE_CHUNK
+2026-02-06 00:22:50,772 - StorageServer-storage_4 - INFO - Stored PRIMARY chunk 2 of Adesh Palkar.JPG (1048576 bytes)
+2026-02-06 00:24:24,875 - StorageServer-storage_4 - INFO - Request #5 from ('10.81.32.46', 52171): STORE_CHUNK
+2026-02-06 00:24:24,878 - StorageServer-storage_4 - INFO - Stored REPLICA chunk 0 of check.png (19784 bytes)
+2026-02-06 00:25:19,705 - StorageServer-storage_4 - INFO - Storage Server 'storage_4' shutting down...
+2026-02-06 00:25:19,706 - StorageServer-storage_4 - INFO - Total requests served: 5
+2026-02-06 00:25:19,706 - StorageServer-storage_4 - INFO - Store operations: 5
+2026-02-06 00:25:19,706 - StorageServer-storage_4 - INFO - Retrieve operations: 0

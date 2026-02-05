@@ -1,0 +1,18 @@
+2026-02-05 23:27:05,640 - StorageServer-storage_4 - INFO - Storage Server 'storage_4' started on 10.81.32.46:6004
+2026-02-05 23:27:05,640 - StorageServer-storage_4 - INFO - Storage directory: storage_4
+2026-02-05 23:32:32,866 - StorageServer-storage_4 - INFO - Request #1 from ('10.81.32.46', 51392): STORE_CHUNK
+2026-02-05 23:32:32,874 - StorageServer-storage_4 - INFO - Stored chunk 1 of Introduction-to-Operations-Research-Hillier-Lieberman.pdf (1048576 bytes)
+2026-02-05 23:32:33,150 - StorageServer-storage_4 - INFO - Request #2 from ('10.81.32.46', 51396): STORE_CHUNK
+2026-02-05 23:32:33,160 - StorageServer-storage_4 - INFO - Stored chunk 5 of Introduction-to-Operations-Research-Hillier-Lieberman.pdf (1048576 bytes)
+2026-02-05 23:32:33,598 - StorageServer-storage_4 - INFO - Request #3 from ('10.81.32.46', 51401): STORE_CHUNK
+2026-02-05 23:32:33,606 - StorageServer-storage_4 - INFO - Stored chunk 9 of Introduction-to-Operations-Research-Hillier-Lieberman.pdf (1048576 bytes)
+2026-02-05 23:34:10,348 - StorageServer-storage_4 - INFO - Request #4 from ('10.81.32.46', 51415): STORE_CHUNK
+2026-02-05 23:34:10,360 - StorageServer-storage_4 - INFO - Stored chunk 0 of 12IJRT_Aourangabad_ISB.pdf (1048576 bytes)
+2026-02-05 23:34:10,764 - StorageServer-storage_4 - INFO - Request #5 from ('10.81.32.46', 51419): STORE_CHUNK
+2026-02-05 23:34:10,773 - StorageServer-storage_4 - INFO - Stored chunk 4 of 12IJRT_Aourangabad_ISB.pdf (1048576 bytes)
+2026-02-05 23:34:55,716 - StorageServer-storage_4 - INFO - Request #6 from ('10.81.32.46', 51429): RETRIEVE_CHUNK
+2026-02-05 23:34:55,719 - StorageServer-storage_4 - INFO - Sent chunk 0 of 12IJRT_Aourangabad_ISB.pdf (1048576 bytes)
+2026-02-05 23:34:55,930 - StorageServer-storage_4 - INFO - Request #7 from ('10.81.32.46', 51434): RETRIEVE_CHUNK
+2026-02-05 23:34:55,934 - StorageServer-storage_4 - INFO - Sent chunk 4 of 12IJRT_Aourangabad_ISB.pdf (1048576 bytes)
+2026-02-05 23:35:23,173 - StorageServer-storage_4 - INFO - Storage Server 'storage_4' shutting down...
+2026-02-05 23:35:23,175 - StorageServer-storage_4 - INFO - Total requests served: 7

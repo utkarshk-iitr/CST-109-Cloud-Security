@@ -1,0 +1,13 @@
+2026-02-06 00:19:15,953 - StorageServer-storage_1 - INFO - Storage Server 'storage_1' started on 10.81.1.104:6001
+2026-02-06 00:19:15,953 - StorageServer-storage_1 - INFO - Storage directory: storage_1
+2026-02-06 00:19:15,953 - StorageServer-storage_1 - INFO - Replication enabled (factor: 3)
+2026-02-06 00:22:50,210 - StorageServer-storage_1 - INFO - Request #1 from ('10.81.32.46', 52142): STORE_CHUNK
+2026-02-06 00:22:50,450 - StorageServer-storage_1 - INFO - Stored REPLICA chunk 0 of Adesh Palkar.JPG (1048576 bytes)
+2026-02-06 00:22:50,889 - StorageServer-storage_1 - INFO - Request #2 from ('10.81.32.46', 52148): STORE_CHUNK
+2026-02-06 00:22:50,987 - StorageServer-storage_1 - INFO - Stored REPLICA chunk 2 of Adesh Palkar.JPG (1048576 bytes)
+2026-02-06 00:22:51,077 - StorageServer-storage_1 - INFO - Request #3 from ('10.81.32.46', 52150): STORE_CHUNK
+2026-02-06 00:22:51,135 - StorageServer-storage_1 - INFO - Stored REPLICA chunk 3 of Adesh Palkar.JPG (399839 bytes)
+2026-02-06 00:25:23,425 - StorageServer-storage_1 - INFO - Storage Server 'storage_1' shutting down...
+2026-02-06 00:25:23,426 - StorageServer-storage_1 - INFO - Total requests served: 3
+2026-02-06 00:25:23,426 - StorageServer-storage_1 - INFO - Store operations: 3
+2026-02-06 00:25:23,426 - StorageServer-storage_1 - INFO - Retrieve operations: 0

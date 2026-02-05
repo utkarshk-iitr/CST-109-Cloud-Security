@@ -1,0 +1,13 @@
+2026-02-06 00:58:19,343 - StorageServer-storage_4 - INFO - Storage Server 'storage_4' started on 10.81.32.46:6004
+2026-02-06 00:58:19,343 - StorageServer-storage_4 - INFO - Storage directory: storage_4
+2026-02-06 00:58:19,343 - StorageServer-storage_4 - INFO - Replication enabled (factor: 3)
+2026-02-06 00:58:19,343 - StorageServer-storage_4 - INFO - Fault tolerance enabled
+2026-02-06 00:59:20,371 - StorageServer-storage_4 - INFO - Request #7 from ('10.81.32.46', 52531): STORE_CHUNK
+2026-02-06 00:59:20,373 - StorageServer-storage_4 - INFO - Stored REPLICA chunk 0 of check.png (19784 bytes)
+2026-02-06 01:00:30,274 - StorageServer-storage_4 - INFO - Request #15 from ('10.81.32.46', 52540): STORE_CHUNK
+2026-02-06 01:00:30,276 - StorageServer-storage_4 - INFO - Stored PRIMARY chunk 0 of draw.png (24285 bytes)
+2026-02-06 01:01:09,461 - StorageServer-storage_4 - INFO - Storage Server 'storage_4' shutting down...
+2026-02-06 01:01:09,461 - StorageServer-storage_4 - INFO - Total requests served: 19
+2026-02-06 01:01:09,461 - StorageServer-storage_4 - INFO -   Store operations: 2
+2026-02-06 01:01:09,462 - StorageServer-storage_4 - INFO -   Retrieve operations: 0
+2026-02-06 01:01:09,462 - StorageServer-storage_4 - INFO -   Health checks: 17

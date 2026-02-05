@@ -1,0 +1,93 @@
+2026-02-06 00:57:25,602 - MetadataServer - INFO - Health monitor started
+2026-02-06 00:57:25,602 - MetadataServer - INFO - Metadata Server started on 10.81.1.104:5000
+2026-02-06 00:57:25,602 - MetadataServer - INFO - Managing 4 storage servers
+2026-02-06 00:57:25,602 - MetadataServer - INFO - Replication factor: 3
+2026-02-06 00:57:25,602 - MetadataServer - INFO - Health check interval: 10s
+2026-02-06 00:57:35,738 - MetadataServer - INFO - Health check: 4/4 servers online
+2026-02-06 00:57:45,780 - MetadataServer - INFO - Health check: 4/4 servers online
+2026-02-06 00:57:55,904 - MetadataServer - INFO - Health check: 4/4 servers online
+2026-02-06 00:58:05,913 - MetadataServer - WARNING - Server storage_3 detected OFFLINE
+2026-02-06 00:58:05,918 - MetadataServer - INFO - Health check: 3/4 servers online
+2026-02-06 00:58:15,978 - MetadataServer - INFO - Server storage_3 is back ONLINE
+2026-02-06 00:58:15,986 - MetadataServer - WARNING - Server storage_4 detected OFFLINE
+2026-02-06 00:58:15,986 - MetadataServer - INFO - Health check: 3/4 servers online
+2026-02-06 00:58:26,116 - MetadataServer - INFO - Server storage_4 is back ONLINE
+2026-02-06 00:58:26,116 - MetadataServer - INFO - Health check: 4/4 servers online
+2026-02-06 00:58:36,259 - MetadataServer - INFO - Health check: 4/4 servers online
+2026-02-06 00:58:46,295 - MetadataServer - INFO - Health check: 4/4 servers online
+2026-02-06 00:58:50,485 - MetadataServer - INFO - Received request from ('10.81.32.46', 52526): SERVER_STATUS
+2026-02-06 00:58:56,331 - MetadataServer - INFO - Health check: 4/4 servers online
+2026-02-06 00:59:06,465 - MetadataServer - INFO - Health check: 4/4 servers online
+2026-02-06 00:59:16,602 - MetadataServer - INFO - Health check: 4/4 servers online
+2026-02-06 00:59:20,387 - MetadataServer - INFO - Received request from ('10.81.32.46', 52528): UPLOAD_REQUEST
+2026-02-06 00:59:20,388 - MetadataServer - INFO - Upload request for check.png (19784 bytes, 1 chunks)
+2026-02-06 00:59:20,388 - MetadataServer - INFO - Replication factor: 3, Online servers: 4
+2026-02-06 00:59:20,388 - MetadataServer - INFO -   Chunk 0 -> Primary: storage_3, Replicas: ['storage_2', 'storage_4']
+2026-02-06 00:59:20,441 - MetadataServer - INFO - Received request from ('10.81.32.46', 52532): UPLOAD_COMPLETE
+2026-02-06 00:59:20,441 - MetadataServer - INFO - Upload complete for check.png
+2026-02-06 00:59:20,441 - MetadataServer - INFO -   Total chunks: 1, Total size: 19784 bytes
+2026-02-06 00:59:20,441 - MetadataServer - INFO -   Chunk 0: 3 replicas on ['storage_3', 'storage_2', 'storage_4']
+2026-02-06 00:59:26,275 - MetadataServer - INFO - Received request from ('10.81.32.46', 52534): LIST_FILES
+2026-02-06 00:59:26,275 - MetadataServer - INFO - List files request - 1 files
+2026-02-06 00:59:26,742 - MetadataServer - INFO - Health check: 4/4 servers online
+2026-02-06 00:59:36,885 - MetadataServer - INFO - Health check: 4/4 servers online
+2026-02-06 00:59:47,016 - MetadataServer - INFO - Health check: 4/4 servers online
+2026-02-06 00:59:50,083 - MetadataServer - INFO - Received request from ('10.81.32.46', 52535): SERVER_STATUS
+2026-02-06 00:59:55,818 - MetadataServer - INFO - Received request from ('10.81.32.46', 52536): SERVER_STATUS
+2026-02-06 00:59:57,017 - MetadataServer - WARNING - Server storage_2 detected OFFLINE
+2026-02-06 00:59:57,153 - MetadataServer - INFO - Health check: 3/4 servers online
+2026-02-06 00:59:58,890 - MetadataServer - INFO - Received request from ('10.81.32.46', 52537): SERVER_STATUS
+2026-02-06 01:00:02,371 - MetadataServer - INFO - Received request from ('10.81.32.46', 52538): LIST_FILES
+2026-02-06 01:00:02,371 - MetadataServer - INFO - List files request - 1 files
+2026-02-06 01:00:07,289 - MetadataServer - INFO - Health check: 3/4 servers online
+2026-02-06 01:00:17,328 - MetadataServer - INFO - Health check: 3/4 servers online
+2026-02-06 01:00:27,467 - MetadataServer - INFO - Health check: 3/4 servers online
+2026-02-06 01:00:30,328 - MetadataServer - INFO - Received request from ('10.81.32.46', 52539): UPLOAD_REQUEST
+2026-02-06 01:00:30,328 - MetadataServer - INFO - Upload request for draw.png (24285 bytes, 1 chunks)
+2026-02-06 01:00:30,328 - MetadataServer - INFO - Replication factor: 3, Online servers: 3
+2026-02-06 01:00:30,328 - MetadataServer - INFO -   Chunk 0 -> Primary: storage_4, Replicas: ['storage_3', 'storage_1']
+2026-02-06 01:00:30,399 - MetadataServer - INFO - Received request from ('10.81.32.46', 52543): UPLOAD_COMPLETE
+2026-02-06 01:00:30,399 - MetadataServer - INFO - Upload complete for draw.png
+2026-02-06 01:00:30,399 - MetadataServer - INFO -   Total chunks: 1, Total size: 24285 bytes
+2026-02-06 01:00:30,399 - MetadataServer - INFO -   Chunk 0: 3 replicas on ['storage_4', 'storage_3', 'storage_1']
+2026-02-06 01:00:33,704 - MetadataServer - INFO - Received request from ('10.81.32.46', 52544): LIST_FILES
+2026-02-06 01:00:33,704 - MetadataServer - INFO - List files request - 2 files
+2026-02-06 01:00:37,602 - MetadataServer - INFO - Health check: 3/4 servers online
+2026-02-06 01:00:47,640 - MetadataServer - INFO - Health check: 3/4 servers online
+2026-02-06 01:00:57,777 - MetadataServer - INFO - Health check: 3/4 servers online
+2026-02-06 01:01:07,815 - MetadataServer - INFO - Health check: 3/4 servers online
+2026-02-06 01:01:17,846 - MetadataServer - INFO - Health check: 3/4 servers online
+2026-02-06 01:01:27,979 - MetadataServer - WARNING - Server storage_4 detected OFFLINE
+2026-02-06 01:01:27,980 - MetadataServer - INFO - Health check: 2/4 servers online
+2026-02-06 01:01:29,618 - MetadataServer - INFO - Received request from ('10.81.32.46', 52550): SERVER_STATUS
+2026-02-06 01:01:38,014 - MetadataServer - INFO - Health check: 2/4 servers online
+2026-02-06 01:01:48,154 - MetadataServer - INFO - Health check: 2/4 servers online
+2026-02-06 01:01:58,189 - MetadataServer - INFO - Health check: 2/4 servers online
+2026-02-06 01:02:08,231 - MetadataServer - INFO - Health check: 2/4 servers online
+2026-02-06 01:02:18,360 - MetadataServer - INFO - Health check: 2/4 servers online
+2026-02-06 01:02:28,398 - MetadataServer - INFO - Health check: 2/4 servers online
+2026-02-06 01:02:38,439 - MetadataServer - INFO - Health check: 2/4 servers online
+2026-02-06 01:02:48,567 - MetadataServer - INFO - Health check: 2/4 servers online
+2026-02-06 01:02:51,744 - MetadataServer - INFO - Received request from ('10.81.32.46', 52555): SERVER_STATUS
+2026-02-06 01:02:57,071 - MetadataServer - INFO - Received request from ('10.81.32.46', 52557): UPLOAD_REQUEST
+2026-02-06 01:02:57,071 - MetadataServer - INFO - Upload request for Group_4.pdf (1032565 bytes, 1 chunks)
+2026-02-06 01:02:57,071 - MetadataServer - INFO - Replication factor: 3, Online servers: 2
+2026-02-06 01:02:57,071 - MetadataServer - WARNING - Only 2 servers online, requested 3 replicas
+2026-02-06 01:02:57,072 - MetadataServer - INFO -   Chunk 0 -> Primary: storage_1, Replicas: ['storage_3']
+2026-02-06 01:02:57,935 - MetadataServer - INFO - Received request from ('10.81.32.46', 52560): UPLOAD_COMPLETE
+2026-02-06 01:02:57,936 - MetadataServer - INFO - Upload complete for Group_4.pdf
+2026-02-06 01:02:57,936 - MetadataServer - INFO -   Total chunks: 1, Total size: 1032565 bytes
+2026-02-06 01:02:57,936 - MetadataServer - INFO -   Chunk 0: 2 replicas on ['storage_1', 'storage_3']
+2026-02-06 01:02:58,708 - MetadataServer - INFO - Health check: 2/4 servers online
+2026-02-06 01:03:08,740 - MetadataServer - INFO - Health check: 2/4 servers online
+2026-02-06 01:03:13,861 - MetadataServer - INFO - Received request from ('10.81.32.46', 52561): LIST_FILES
+2026-02-06 01:03:13,861 - MetadataServer - INFO - List files request - 3 files
+2026-02-06 01:03:18,880 - MetadataServer - INFO - Health check: 2/4 servers online
+2026-02-06 01:03:29,021 - MetadataServer - INFO - Health check: 2/4 servers online
+2026-02-06 01:03:30,143 - MetadataServer - INFO - Received request from ('10.81.32.46', 52562): DOWNLOAD_REQUEST
+2026-02-06 01:03:30,143 - MetadataServer - INFO - Download request for Group_4.pdf - 1 chunks
+2026-02-06 01:03:30,143 - MetadataServer - INFO -   Chunk 0: 2 online replicas (+ 0 offline)
+2026-02-06 01:03:39,054 - MetadataServer - INFO - Health check: 2/4 servers online
+2026-02-06 01:03:47,040 - MetadataServer - INFO - Received request from ('10.81.32.46', 52565): SERVER_STATUS
+2026-02-06 01:03:49,192 - MetadataServer - INFO - Health check: 2/4 servers online
+2026-02-06 01:03:54,246 - MetadataServer - INFO - Metadata Server shutting down...

@@ -1,0 +1,40 @@
+2026-02-06 00:19:13,293 - MetadataServer - INFO - Metadata Server started on 10.81.1.104:5000
+2026-02-06 00:19:13,293 - MetadataServer - INFO - Managing 4 storage servers
+2026-02-06 00:19:13,293 - MetadataServer - INFO - Replication factor: 3
+2026-02-06 00:19:38,381 - MetadataServer - INFO - Received request from ('10.81.32.46', 52096): LIST_FILES
+2026-02-06 00:19:38,381 - MetadataServer - INFO - List files request - 0 files
+2026-02-06 00:20:16,092 - MetadataServer - INFO - Received request from ('10.81.32.46', 52110): UPLOAD_REQUEST
+2026-02-06 00:20:16,093 - MetadataServer - INFO - Upload request for AIPS94-037.pdf (669139 bytes, 1 chunks)
+2026-02-06 00:20:16,093 - MetadataServer - INFO - Replication factor: 3
+2026-02-06 00:20:16,093 - MetadataServer - INFO -   Chunk 0 -> Primary: storage_3, Replicas: ['storage_4', 'storage_2']
+2026-02-06 00:20:16,303 - MetadataServer - INFO - Received request from ('10.81.32.46', 52114): UPLOAD_COMPLETE
+2026-02-06 00:20:16,303 - MetadataServer - INFO - Upload complete for AIPS94-037.pdf
+2026-02-06 00:20:16,304 - MetadataServer - INFO -   Total chunks: 1, Total size: 669139 bytes
+2026-02-06 00:20:16,304 - MetadataServer - INFO -   Chunk 0: 3 replicas on ['storage_3', 'storage_4', 'storage_2']
+2026-02-06 00:20:23,394 - MetadataServer - INFO - Received request from ('10.81.32.46', 52115): LIST_FILES
+2026-02-06 00:20:23,394 - MetadataServer - INFO - List files request - 1 files
+2026-02-06 00:22:30,031 - MetadataServer - INFO - Received request from ('10.81.32.46', 52133): LIST_FILES
+2026-02-06 00:22:30,031 - MetadataServer - INFO - List files request - 1 files
+2026-02-06 00:22:49,999 - MetadataServer - INFO - Received request from ('10.81.32.46', 52139): UPLOAD_REQUEST
+2026-02-06 00:22:49,999 - MetadataServer - INFO - Upload request for Adesh Palkar.JPG (3545567 bytes, 4 chunks)
+2026-02-06 00:22:49,999 - MetadataServer - INFO - Replication factor: 3
+2026-02-06 00:22:50,000 - MetadataServer - INFO -   Chunk 0 -> Primary: storage_4, Replicas: ['storage_2', 'storage_1']
+2026-02-06 00:22:50,000 - MetadataServer - INFO -   Chunk 1 -> Primary: storage_4, Replicas: ['storage_3', 'storage_2']
+2026-02-06 00:22:50,000 - MetadataServer - INFO -   Chunk 2 -> Primary: storage_4, Replicas: ['storage_3', 'storage_1']
+2026-02-06 00:22:50,000 - MetadataServer - INFO -   Chunk 3 -> Primary: storage_3, Replicas: ['storage_1', 'storage_2']
+2026-02-06 00:23:29,629 - MetadataServer - INFO - Received request from ('10.81.32.46', 52158): LIST_FILES
+2026-02-06 00:23:29,629 - MetadataServer - INFO - List files request - 1 files
+2026-02-06 00:24:24,885 - MetadataServer - INFO - Received request from ('10.81.32.46', 52169): UPLOAD_REQUEST
+2026-02-06 00:24:24,886 - MetadataServer - INFO - Upload request for check.png (19784 bytes, 1 chunks)
+2026-02-06 00:24:24,886 - MetadataServer - INFO - Replication factor: 3
+2026-02-06 00:24:24,886 - MetadataServer - INFO -   Chunk 0 -> Primary: storage_3, Replicas: ['storage_4', 'storage_2']
+2026-02-06 00:24:24,968 - MetadataServer - INFO - Received request from ('10.81.32.46', 52173): UPLOAD_COMPLETE
+2026-02-06 00:24:24,968 - MetadataServer - INFO - Upload complete for check.png
+2026-02-06 00:24:24,968 - MetadataServer - INFO -   Total chunks: 1, Total size: 19784 bytes
+2026-02-06 00:24:24,968 - MetadataServer - INFO -   Chunk 0: 3 replicas on ['storage_3', 'storage_4', 'storage_2']
+2026-02-06 00:24:27,895 - MetadataServer - INFO - Received request from ('10.81.32.46', 52174): LIST_FILES
+2026-02-06 00:24:27,896 - MetadataServer - INFO - List files request - 2 files
+2026-02-06 00:25:05,799 - MetadataServer - INFO - Received request from ('10.81.32.46', 52180): DOWNLOAD_REQUEST
+2026-02-06 00:25:05,799 - MetadataServer - INFO - Download request for check.png - 1 chunks
+2026-02-06 00:25:05,799 - MetadataServer - INFO -   Chunk 0: 3 replicas available
+2026-02-06 00:25:20,973 - MetadataServer - INFO - Metadata Server shutting down...

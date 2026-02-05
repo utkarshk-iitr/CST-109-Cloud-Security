@@ -1,0 +1,20 @@
+2026-02-05 23:26:45,196 - StorageServer-storage_3 - INFO - Storage Server 'storage_3' started on 10.81.32.46:6003
+2026-02-05 23:26:45,196 - StorageServer-storage_3 - INFO - Storage directory: storage_3
+2026-02-05 23:32:32,851 - StorageServer-storage_3 - INFO - Request #1 from ('10.81.32.46', 51391): STORE_CHUNK
+2026-02-05 23:32:32,860 - StorageServer-storage_3 - INFO - Stored chunk 0 of Introduction-to-Operations-Research-Hillier-Lieberman.pdf (1048576 bytes)
+2026-02-05 23:32:33,136 - StorageServer-storage_3 - INFO - Request #2 from ('10.81.32.46', 51395): STORE_CHUNK
+2026-02-05 23:32:33,148 - StorageServer-storage_3 - INFO - Stored chunk 4 of Introduction-to-Operations-Research-Hillier-Lieberman.pdf (1048576 bytes)
+2026-02-05 23:32:33,579 - StorageServer-storage_3 - INFO - Request #3 from ('10.81.32.46', 51399): STORE_CHUNK
+2026-02-05 23:32:33,596 - StorageServer-storage_3 - INFO - Stored chunk 8 of Introduction-to-Operations-Research-Hillier-Lieberman.pdf (1048576 bytes)
+2026-02-05 23:32:33,810 - StorageServer-storage_3 - INFO - Request #4 from ('10.81.32.46', 51404): STORE_CHUNK
+2026-02-05 23:32:33,815 - StorageServer-storage_3 - INFO - Stored chunk 12 of Introduction-to-Operations-Research-Hillier-Lieberman.pdf (411754 bytes)
+2026-02-05 23:34:10,747 - StorageServer-storage_3 - INFO - Request #5 from ('10.81.32.46', 51418): STORE_CHUNK
+2026-02-05 23:34:10,762 - StorageServer-storage_3 - INFO - Stored chunk 3 of 12IJRT_Aourangabad_ISB.pdf (1048576 bytes)
+2026-02-05 23:34:11,221 - StorageServer-storage_3 - INFO - Request #6 from ('10.81.32.46', 51422): STORE_CHUNK
+2026-02-05 23:34:11,229 - StorageServer-storage_3 - INFO - Stored chunk 7 of 12IJRT_Aourangabad_ISB.pdf (840774 bytes)
+2026-02-05 23:34:55,917 - StorageServer-storage_3 - INFO - Request #7 from ('10.81.32.46', 51433): RETRIEVE_CHUNK
+2026-02-05 23:34:55,922 - StorageServer-storage_3 - INFO - Sent chunk 3 of 12IJRT_Aourangabad_ISB.pdf (1048576 bytes)
+2026-02-05 23:34:56,404 - StorageServer-storage_3 - INFO - Request #8 from ('10.81.32.46', 51438): RETRIEVE_CHUNK
+2026-02-05 23:34:56,409 - StorageServer-storage_3 - INFO - Sent chunk 7 of 12IJRT_Aourangabad_ISB.pdf (840774 bytes)
+2026-02-05 23:35:12,937 - StorageServer-storage_3 - INFO - Storage Server 'storage_3' shutting down...
+2026-02-05 23:35:12,938 - StorageServer-storage_3 - INFO - Total requests served: 8
