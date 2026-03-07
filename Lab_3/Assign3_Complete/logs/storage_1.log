@@ -1,0 +1,12 @@
+2026-03-07 11:33:00,971 - StorageServer-storage_1 - INFO - Storage Server 'storage_1' started on 127.0.0.1:6001
+2026-03-07 11:33:00,971 - StorageServer-storage_1 - INFO - Storage directory: /home/utk/Desktop/UtkKumar/CST-109-Cloud-Security/Lab_3/Assign3_Week2/storage_1
+2026-03-07 11:33:00,971 - StorageServer-storage_1 - INFO - Security features: Rate limiting, Integrity checking, Audit logging
+2026-03-07 11:33:00,971 - StorageServer-storage_1 - INFO - Max chunk size: 10.0 MB
+2026-03-07 11:34:33,808 - StorageServer-storage_1 - INFO - Request #1 from 127.0.0.1: STORE_CHUNK
+2026-03-07 11:34:33,808 - Audit-storage_1 - INFO - Request #1 | IP: 127.0.0.1 | Operation: STORE_CHUNK
+2026-03-07 11:34:33,809 - StorageServer-storage_1 - INFO - Stored chunk 0 of test_cloud.txt (2200 bytes)
+2026-03-07 11:34:33,809 - Audit-storage_1 - INFO - Request #1 | STORE | test_cloud.txt_chunk_0 | Size: 2200 | Checksum: 0399d850a1fd7aff... | IP: 127.0.0.1
+2026-03-07 11:41:23,126 - StorageServer-storage_1 - INFO - Storage Server 'storage_1' started on 127.0.0.1:6001
+2026-03-07 11:41:23,126 - StorageServer-storage_1 - INFO - Storage directory: /home/utk/Desktop/UtkKumar/CST-109-Cloud-Security/Lab_3/Assign3_Complete/storage_1
+2026-03-07 11:41:23,126 - StorageServer-storage_1 - INFO - Security features: Rate limiting, Integrity checking, Audit logging
+2026-03-07 11:41:23,126 - StorageServer-storage_1 - INFO - Max chunk size: 10.0 MB
