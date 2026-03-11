@@ -1,5 +1,6 @@
 import sys
 import socket
+import ssl
 import json
 import threading
 import logging
@@ -14,6 +15,11 @@ _SOURCE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if _SOURCE_DIR not in sys.path:
     sys.path.insert(0, _SOURCE_DIR)
 from security_modules.mitigation_engine import *
+
+CERT_DIR    = os.path.join(_SOURCE_DIR, 'certs')
+SERVER_CERT = os.path.join(CERT_DIR, 'server.crt')
+SERVER_KEY  = os.path.join(CERT_DIR, 'server.key')
+CA_CERT     = os.path.join(CERT_DIR, 'server.crt')
 
 GATEWAY_HOST = '127.0.0.1'
 GATEWAY_PORT = 8080
@@ -80,8 +86,12 @@ class APIGateway:
 
     def fwd(self, data):
         try:
-            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            sock.settimeout(10)
+            ctx = ssl.create_default_context(ssl.Purpose.SERVER_AUTH)
+            ctx.load_verify_locations(CA_CERT)
+            ctx.check_hostname = False
+            raw = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            raw.settimeout(10)
+            sock = ctx.wrap_socket(raw, server_hostname='localhost')
             sock.connect((APP_HOST, APP_PORT))
             sock.send(data)
             response = sock.recv(65536)
@@ -171,7 +181,11 @@ class APIGateway:
         server_socket.bind((GATEWAY_HOST, GATEWAY_PORT))
         server_socket.listen(10)
 
-        logger.info(f"API Gateway started on {GATEWAY_HOST}:{GATEWAY_PORT}")
+        ssl_ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+        ssl_ctx.load_cert_chain(SERVER_CERT, SERVER_KEY)
+        server_socket = ssl_ctx.wrap_socket(server_socket, server_side=True)
+
+        logger.info(f"API Gateway started on {GATEWAY_HOST}:{GATEWAY_PORT} (TLS enabled)")
         logger.info(f"Backend: {APP_HOST}:{APP_PORT}")
         logger.info(f"Security: Rate limit={RATE_LIMIT_PER_MIN}/min, Brute-force threshold={BRUTE_FORCE_THRESHOLD}, DoS threshold={DOS_THRESHOLD}/min")
         print(f"\n[API Gateway] Listening on {GATEWAY_HOST}:{GATEWAY_PORT}")

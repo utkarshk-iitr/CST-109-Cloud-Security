@@ -1,4 +1,5 @@
 import socket
+import ssl
 import json
 import threading
 import logging
@@ -12,6 +13,11 @@ from collections import defaultdict
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 LOG_DIR = os.path.join(BASE_DIR, 'logs')
 os.makedirs(LOG_DIR, exist_ok=True)
+
+_SRC_DIR    = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+CERT_DIR    = os.path.join(_SRC_DIR, 'certs')
+SERVER_CERT = os.path.join(CERT_DIR, 'server.crt')
+SERVER_KEY  = os.path.join(CERT_DIR, 'server.key')
 
 LOG_FORM = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 
@@ -304,7 +310,11 @@ class StorageServer:
         ssock.bind((self.host, self.port))
         ssock.listen(5)
 
-        self.log.info(f"Storage Server '{self.sid}' started on {self.host}:{self.port}")
+        ssl_ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+        ssl_ctx.load_cert_chain(SERVER_CERT, SERVER_KEY)
+        ssock = ssl_ctx.wrap_socket(ssock, server_side=True)
+
+        self.log.info(f"Storage Server '{self.sid}' started on {self.host}:{self.port} (TLS enabled)")
         self.log.info(f"Storage directory: {self.store_dir}")
         self.log.info(f"Security features: Rate limiting, Integrity checking, Audit logging")
         self.log.info(f"Max chunk size: {MAX_CHUNK / 1024 / 1024} MB")

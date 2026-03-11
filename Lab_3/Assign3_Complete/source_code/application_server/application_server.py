@@ -1,4 +1,5 @@
 import socket
+import ssl
 import json
 import threading
 import logging
@@ -12,6 +13,11 @@ import secrets
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 LOG_DIR = os.path.join(BASE_DIR, 'logs')
 os.makedirs(LOG_DIR, exist_ok=True)
+
+_SRC_DIR    = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+CERT_DIR    = os.path.join(_SRC_DIR, 'certs')
+SERVER_CERT = os.path.join(CERT_DIR, 'server.crt')
+SERVER_KEY  = os.path.join(CERT_DIR, 'server.key')
 
 STORAGE_SERVERS = [
     {'host': '127.0.0.1', 'port': 6001, 'id': 'storage_1'},
@@ -351,8 +357,11 @@ class AppServer:
         server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         server_socket.bind((self.host, self.port))
         server_socket.listen(5)
-        
-        logger.info(f"Application Server started on {self.host}:{self.port}")
+
+        ssl_ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+        ssl_ctx.load_cert_chain(SERVER_CERT, SERVER_KEY)
+        server_socket = ssl_ctx.wrap_socket(server_socket, server_side=True)
+        logger.info(f"Application Server started on {self.host}:{self.port} (TLS enabled)")
         
         try:
             while True:
