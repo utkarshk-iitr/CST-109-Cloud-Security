@@ -1,8 +1,0 @@
-2026-03-07 11:33:25,928 - StorageServer-storage_2 - INFO - Storage Server 'storage_2' started on 127.0.0.1:6002
-2026-03-07 11:33:25,929 - StorageServer-storage_2 - INFO - Storage directory: /home/utk/Desktop/UtkKumar/CST-109-Cloud-Security/Lab_3/Assign3_Week2/storage_2
-2026-03-07 11:33:25,929 - StorageServer-storage_2 - INFO - Security features: Rate limiting, Integrity checking, Audit logging
-2026-03-07 11:33:25,929 - StorageServer-storage_2 - INFO - Max chunk size: 10.0 MB
-2026-03-07 11:41:35,701 - StorageServer-storage_2 - INFO - Storage Server 'storage_2' started on 127.0.0.1:6002
-2026-03-07 11:41:35,701 - StorageServer-storage_2 - INFO - Storage directory: /home/utk/Desktop/UtkKumar/CST-109-Cloud-Security/Lab_3/Assign3_Complete/storage_2
-2026-03-07 11:41:35,701 - StorageServer-storage_2 - INFO - Security features: Rate limiting, Integrity checking, Audit logging
-2026-03-07 11:41:35,701 - StorageServer-storage_2 - INFO - Max chunk size: 10.0 MB

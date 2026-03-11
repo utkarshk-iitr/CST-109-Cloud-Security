@@ -1,8 +1,0 @@
-2026-03-07 11:42:32,195 - GW-Mitigation - INFO - MITIGATION: Tampered token rejected | IP: 127.0.0.1 | Action: Request denied
-2026-03-07 11:42:32,197 - GW-Mitigation - INFO - MITIGATION: Tampered token rejected | IP: 127.0.0.1 | Action: Request denied
-2026-03-07 11:42:32,198 - GW-Mitigation - INFO - MITIGATION: Tampered token rejected | IP: 127.0.0.1 | Action: Request denied
-2026-03-07 11:42:32,198 - GW-Mitigation - INFO - MITIGATION: Tampered token rejected | IP: 127.0.0.1 | Action: Request denied
-2026-03-07 11:42:32,200 - GW-Mitigation - INFO - MITIGATION: Tampered token rejected | IP: 127.0.0.1 | Action: Request denied
-2026-03-07 11:42:32,202 - GW-Mitigation - INFO - MITIGATION: IDOR blocked | IP: 127.0.0.1 | Operation: DELETE_FILE | Action: Permission denied
-2026-03-07 11:42:32,204 - GW-Mitigation - INFO - MITIGATION: IDOR blocked | IP: 127.0.0.1 | Operation: UPLOAD_REQUEST | Action: Permission denied
-2026-03-07 11:42:32,204 - GW-Mitigation - INFO - MITIGATION: Tampered token rejected | IP: 127.0.0.1 | Action: Request denied

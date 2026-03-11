@@ -1,9 +1,4 @@
-"""
-API Gateway / Reverse Proxy
-Sits between Client and Application Server.
-Provides: rate limiting, IP blocking, threat detection, request forwarding.
-"""
-
+import sys
 import socket
 import json
 import threading
@@ -11,30 +6,23 @@ import logging
 import time
 import os
 from datetime import datetime
-from collections import defaultdict
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 LOG_DIR = os.path.join(BASE_DIR, 'logs')
 os.makedirs(LOG_DIR, exist_ok=True)
 
-# Gateway config
+_SOURCE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if _SOURCE_DIR not in sys.path:
+    sys.path.insert(0, _SOURCE_DIR)
+from security_modules.mitigation_engine import *
+
 GATEWAY_HOST = '127.0.0.1'
 GATEWAY_PORT = 8080
-
-# Application server (backend)
 APP_SERVER_HOST = '127.0.0.1'
 APP_SERVER_PORT = 5000
 
-# Security thresholds
-MAX_REQUESTS_PER_MINUTE = 30
-BRUTE_FORCE_THRESHOLD = 5
-LOCKOUT_DURATION = 300
-DOS_THRESHOLD = 100
-AUTO_BLOCK_DURATION = 600
-
 LOG_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 
-# --- Loggers ---
 logging.basicConfig(level=logging.INFO, format=LOG_FORMAT)
 logger = logging.getLogger('APIGateway')
 gw_handler = logging.FileHandler(os.path.join(LOG_DIR, 'gateway.log'))
@@ -62,10 +50,7 @@ mitigation_logger.setLevel(logging.INFO)
 
 class APIGateway:
     def __init__(self):
-        self.request_counts = defaultdict(list)
-        self.blocked_ips = {}       # ip -> unblock_time (0 = permanent)
-        self.failed_auths = defaultdict(int)
-        self.locked_ips = {}        # ip -> unlock_time
+        self.engine = MitigationEngine(logger=mitigation_logger)
         self.lock = threading.Lock()
 
         # Stats
@@ -73,64 +58,6 @@ class APIGateway:
         self.threats_detected = 0
         self.mitigations_applied = 0
         self.start_time = time.time()
-
-    def is_blocked(self, client_ip):
-        with self.lock:
-            if client_ip in self.blocked_ips:
-                unblock = self.blocked_ips[client_ip]
-                if unblock == 0 or time.time() < unblock:
-                    return True
-                else:
-                    del self.blocked_ips[client_ip]
-            return False
-
-    def is_locked(self, client_ip):
-        with self.lock:
-            if client_ip in self.locked_ips:
-                if time.time() < self.locked_ips[client_ip]:
-                    return True
-                else:
-                    del self.locked_ips[client_ip]
-                    self.failed_auths[client_ip] = 0
-            return False
-
-    def check_rate_limit(self, client_ip):
-        with self.lock:
-            now = time.time()
-            self.request_counts[client_ip] = [
-                ts for ts in self.request_counts[client_ip] if now - ts < 60
-            ]
-            count = len(self.request_counts[client_ip])
-
-            # DoS pattern - auto block
-            if count >= DOS_THRESHOLD:
-                self.blocked_ips[client_ip] = time.time() + AUTO_BLOCK_DURATION
-                threat_logger.critical(
-                    f"THREAT: DoS attack detected | IP: {client_ip} | "
-                    f"Requests: {count}/min | Action: IP blocked for {AUTO_BLOCK_DURATION}s"
-                )
-                mitigation_logger.critical(
-                    f"MITIGATION: IP auto-blocked | IP: {client_ip} | "
-                    f"Reason: DoS pattern ({count} req/min) | Duration: {AUTO_BLOCK_DURATION}s"
-                )
-                self.threats_detected += 1
-                self.mitigations_applied += 1
-                return False
-
-            # Rate limit
-            if count >= MAX_REQUESTS_PER_MINUTE:
-                threat_logger.warning(
-                    f"THREAT: Rate limit exceeded | IP: {client_ip} | Requests: {count}/min"
-                )
-                mitigation_logger.info(
-                    f"MITIGATION: Rate limited | IP: {client_ip} | Action: Request denied"
-                )
-                self.threats_detected += 1
-                self.mitigations_applied += 1
-                return False
-
-            self.request_counts[client_ip].append(now)
-            return True
 
     def record_auth_result(self, client_ip, request, response):
         """Track auth results for brute-force detection."""
@@ -143,25 +70,19 @@ class APIGateway:
 
         if status == 'SUCCESS':
             auth_logger.info(f"AUTH SUCCESS | User: {username} | IP: {client_ip}")
-            with self.lock:
-                self.failed_auths[client_ip] = 0
+            self.engine.record_auth_success(client_ip)
         else:
             auth_logger.warning(
                 f"AUTH FAILED | User: {username} | IP: {client_ip} | "
                 f"Reason: {response.get('message', 'unknown')}"
             )
-            with self.lock:
-                self.failed_auths[client_ip] += 1
-                fails = self.failed_auths[client_ip]
+            locked = self.engine.record_auth_failure(client_ip)
+            fails = self.engine.failed_auths[client_ip]
 
-            if fails >= BRUTE_FORCE_THRESHOLD:
+            if locked:
                 threat_logger.critical(
                     f"THREAT: Brute-force attack detected | IP: {client_ip} | "
                     f"Failed attempts: {fails} | Target user: {username}"
-                )
-                mitigation_logger.critical(
-                    f"MITIGATION: Account lockout | IP: {client_ip} | "
-                    f"Failed attempts: {fails} | Duration: {LOCKOUT_DURATION}s"
                 )
                 self.threats_detected += 1
                 self.mitigations_applied += 1
@@ -199,23 +120,31 @@ class APIGateway:
                 self.total_requests += 1
                 req_num = self.total_requests
 
-            # Security check 1: IP block
-            if self.is_blocked(client_ip):
-                logger.warning(f"[#{req_num}] Blocked IP connection attempt: {client_ip}")
-                error = {'status': 'ERROR', 'message': 'Your IP has been blocked due to suspicious activity.'}
-                client_socket.send(json.dumps(error).encode())
-                return
-
-            # Security check 2: Account lockout
-            if self.is_locked(client_ip):
-                logger.warning(f"[#{req_num}] Locked-out IP connection attempt: {client_ip}")
-                error = {'status': 'ERROR', 'message': 'Account locked. Try again later.'}
-                client_socket.send(json.dumps(error).encode())
-                return
-
-            # Security check 3: Rate limit
-            if not self.check_rate_limit(client_ip):
-                error = {'status': 'ERROR', 'message': 'Rate limit exceeded. Try again later.'}
+            # Security checks: IP block, account lockout, rate limit / DoS
+            allowed, reason = self.engine.check_request(client_ip)
+            if not allowed:
+                if reason == 'IP blocked - DoS detected':
+                    threat_logger.critical(
+                        f"THREAT: DoS attack detected | IP: {client_ip} | "
+                        f"Requests: {DOS_THRESHOLD}+/min | Action: IP blocked for {AUTO_BLOCK_DURATION}s"
+                    )
+                    self.threats_detected += 1
+                    self.mitigations_applied += 1
+                    msg = 'Your IP has been blocked due to suspicious activity.'
+                elif reason == 'Rate limit exceeded':
+                    threat_logger.warning(
+                        f"THREAT: Rate limit exceeded | IP: {client_ip}"
+                    )
+                    self.threats_detected += 1
+                    self.mitigations_applied += 1
+                    msg = 'Rate limit exceeded. Try again later.'
+                elif reason == 'Account locked':
+                    logger.warning(f"[#{req_num}] Locked-out IP connection attempt: {client_ip}")
+                    msg = 'Account locked. Try again later.'
+                else:  # 'IP blocked'
+                    logger.warning(f"[#{req_num}] Blocked IP connection attempt: {client_ip}")
+                    msg = 'Your IP has been blocked due to suspicious activity.'
+                error = {'status': 'ERROR', 'message': msg}
                 client_socket.send(json.dumps(error).encode())
                 return
 
@@ -293,7 +222,7 @@ class APIGateway:
 
         logger.info(f"API Gateway started on {GATEWAY_HOST}:{GATEWAY_PORT}")
         logger.info(f"Backend: {APP_SERVER_HOST}:{APP_SERVER_PORT}")
-        logger.info(f"Security: Rate limit={MAX_REQUESTS_PER_MINUTE}/min, "
+        logger.info(f"Security: Rate limit={RATE_LIMIT_PER_MIN}/min, "
                      f"Brute-force threshold={BRUTE_FORCE_THRESHOLD}, "
                      f"DoS threshold={DOS_THRESHOLD}/min")
         print(f"\n[API Gateway] Listening on {GATEWAY_HOST}:{GATEWAY_PORT}")

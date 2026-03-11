@@ -321,7 +321,6 @@ class StorageServer:
         finally:
             ssock.close()
 
-
 if len(sys.argv) != 2:
     print("Usage: python3 storage_server.py <server_number>")
     sys.exit(1)

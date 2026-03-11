@@ -127,7 +127,7 @@ class AuthenticationManager:
     def _hash_password(self, password):
         return hashlib.sha256(password.encode()).hexdigest()
     
-    def authenticate(self, username, password, client_ip):
+    def authenticate(self, username, password, client_ip, token_ttl=None):
         if username not in self.users:
             security_logger.warning(f"Authentication failed: Unknown user '{username}' from {client_ip}")
             return None
@@ -138,12 +138,13 @@ class AuthenticationManager:
             return None
         
         token = secrets.token_urlsafe(32)
-        expires = datetime.now() + timedelta(seconds=TOKEN_EXPIRY)
+        ttl = token_ttl if token_ttl is not None else TOKEN_EXPIRY
+        expires = datetime.now() + timedelta(seconds=ttl)
         
         with self.lock:
             self.tokens[token] = {'user': username,'role': self.users[username]['role'],'expires': expires,'ip': client_ip}
         
-        security_logger.info(f"Successful authentication: user '{username}' from {client_ip}")
+        security_logger.info(f"Successful authentication: user '{username}' from {client_ip} (TTL: {ttl}s)")
         return token
     
     def validate_token(self, token, client_ip):
@@ -263,7 +264,8 @@ class ApplicationServer:
         if not username or not password:
             return {'status': 'ERROR', 'message': 'Username and password required'}
         
-        token = self.auth_manager.authenticate(username, password, client_ip)
+        token_ttl = request.get('token_ttl')  # optional override (e.g. for testing)
+        token = self.auth_manager.authenticate(username, password, client_ip, token_ttl=token_ttl)
         
         if token:
             self.security_monitor.reset_failed_auth(client_ip)
