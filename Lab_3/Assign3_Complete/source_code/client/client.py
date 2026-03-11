@@ -10,7 +10,6 @@ import os
 import math
 import time
 import threading
-import sys
 
 # API Gateway address (entry point)
 GATEWAY_HOST = '127.0.0.1'

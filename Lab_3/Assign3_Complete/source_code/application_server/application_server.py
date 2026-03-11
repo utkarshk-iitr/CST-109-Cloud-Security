@@ -19,12 +19,13 @@ STORAGE_SERVERS = [
     {'host': '127.0.0.1', 'port': 6003, 'id': 'storage_3'},
     {'host': '127.0.0.1', 'port': 6004, 'id': 'storage_4'},
 ]
-APPLICATION_SERVER_HOST = '127.0.0.1'
-APPLICATION_SERVER_PORT = 5000
 
-MAX_REQUESTS_PER_MINUTE = 60
+APP_HOST = '127.0.0.1'
+APP_PORT = 5000
+
+MAX_REQ_PER_MIN = 60
 MAX_FAILED_AUTH = 5
-LOCKOUT_DURATION = 300
+LOCKOUT_TIME = 300
 TOKEN_EXPIRY = 3600*24
 
 ROLE_ADMIN = 'admin'
@@ -35,27 +36,23 @@ LOG_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 logging.basicConfig(
     level=logging.INFO,
     format=LOG_FORMAT,
-    handlers=[
-        logging.FileHandler(os.path.join(LOG_DIR, 'application_server.log')),
-        logging.StreamHandler()
-    ]
+    handlers=[logging.FileHandler(os.path.join(LOG_DIR, 'application_server.log')),logging.StreamHandler()]
 )
-logger = logging.getLogger('ApplicationServer')
+logger = logging.getLogger('AppServer')
 
-security_logger = logging.getLogger('SecurityMonitor')
-security_handler = logging.FileHandler(os.path.join(LOG_DIR, 'auth.log'))
-security_handler.setFormatter(logging.Formatter(LOG_FORMAT))
-security_logger.addHandler(security_handler)
-security_logger.setLevel(logging.INFO)
+sec_log = logging.getLogger('SecMonitor')
+sec_hand = logging.FileHandler(os.path.join(LOG_DIR, 'auth.log'))
+sec_hand.setFormatter(logging.Formatter(LOG_FORMAT))
+sec_log.addHandler(sec_hand)
+sec_log.setLevel(logging.INFO)
 
-threat_logger = logging.getLogger('ThreatDetection')
-threat_handler = logging.FileHandler(os.path.join(LOG_DIR, 'threats.log'))
-threat_handler.setFormatter(logging.Formatter(LOG_FORMAT))
-threat_logger.addHandler(threat_handler)
-threat_logger.setLevel(logging.WARNING)
+threat_log = logging.getLogger('ThreatDetection')
+threat_hand = logging.FileHandler(os.path.join(LOG_DIR, 'threats.log'))
+threat_hand.setFormatter(logging.Formatter(LOG_FORMAT))
+threat_log.addHandler(threat_hand)
+threat_log.setLevel(logging.WARNING)
 
-
-class SecurityMonitor:
+class SecMonitor:
     def __init__(self):
         self.request_history = defaultdict(list)
         self.failed_auth = defaultdict(int)
@@ -66,13 +63,10 @@ class SecurityMonitor:
     def check_rate_limit(self, client_ip):
         with self.lock:
             now = time.time()
-            self.request_history[client_ip] = [
-                ts for ts in self.request_history[client_ip] 
-                if now - ts < 60
-            ]
+            self.request_history[client_ip] = [ts for ts in self.request_history[client_ip] if now - ts < 60]
             
-            if len(self.request_history[client_ip]) >= MAX_REQUESTS_PER_MINUTE:
-                threat_logger.warning(f"Rate limit exceeded for {client_ip}")
+            if len(self.request_history[client_ip]) >= MAX_REQ_PER_MIN:
+                threat_log.warning(f"Rate limit exceeded for {client_ip}")
                 return False
             
             self.request_history[client_ip].append(now)
@@ -81,12 +75,11 @@ class SecurityMonitor:
     def record_failed_auth(self, client_ip):
         with self.lock:
             self.failed_auth[client_ip] += 1
-            security_logger.warning(f"Failed authentication from {client_ip} (count: {self.failed_auth[client_ip]})")
+            sec_log.warning(f"Failed authentication from {client_ip} (count: {self.failed_auth[client_ip]})")
             
             if self.failed_auth[client_ip] >= MAX_FAILED_AUTH:
-                lockout_until = time.time() + LOCKOUT_DURATION
-                self.locked_ips[client_ip] = lockout_until
-                threat_logger.critical(f"IP {client_ip} locked out due to {MAX_FAILED_AUTH} failed auth attempts")
+                self.locked_ips[client_ip] = time.time() + LOCKOUT_TIME
+                threat_log.critical(f"IP {client_ip} locked out due to {MAX_FAILED_AUTH} failed auth attempts")
                 return True
             return False
     
@@ -106,35 +99,34 @@ class SecurityMonitor:
     def block_ip(self, client_ip):
         with self.lock:
             self.blocked_ips.add(client_ip)
-            threat_logger.critical(f"IP {client_ip} permanently blocked")
+            threat_log.critical(f"IP {client_ip} permanently blocked")
     
     def reset_failed_auth(self, client_ip):
         with self.lock:
             if client_ip in self.failed_auth:
                 self.failed_auth[client_ip] = 0
 
-
-class AuthenticationManager:
+class AuthManager:
     def __init__(self):
         self.tokens = {}
         self.users = {
-            'admin': {'password_hash': self._hash_password('admin123'), 'role': ROLE_ADMIN},
-            'user1': {'password_hash': self._hash_password('user123'), 'role': ROLE_USER},
-            'readonly': {'password_hash': self._hash_password('read123'), 'role': ROLE_READONLY}
+            'admin': {'password_hash': self.hash_pw('admin123'), 'role': ROLE_ADMIN},
+            'user1': {'password_hash': self.hash_pw('user123'), 'role': ROLE_USER},
+            'readonly': {'password_hash': self.hash_pw('read123'), 'role': ROLE_READONLY}
         }
         self.lock = threading.Lock()
     
-    def _hash_password(self, password):
+    def hash_pw(self, password):
         return hashlib.sha256(password.encode()).hexdigest()
     
-    def authenticate(self, username, password, client_ip, token_ttl=None):
+    def auth(self, username, password, client_ip, token_ttl=None):
         if username not in self.users:
-            security_logger.warning(f"Authentication failed: Unknown user '{username}' from {client_ip}")
+            sec_log.warning(f"Authentication failed: Unknown user '{username}' from {client_ip}")
             return None
         
-        password_hash = self._hash_password(password)
+        password_hash = self.hash_pw(password)
         if self.users[username]['password_hash'] != password_hash:
-            security_logger.warning(f"Authentication failed: Invalid password for '{username}' from {client_ip}")
+            sec_log.warning(f"Authentication failed: Invalid password for '{username}' from {client_ip}")
             return None
         
         token = secrets.token_urlsafe(32)
@@ -144,22 +136,22 @@ class AuthenticationManager:
         with self.lock:
             self.tokens[token] = {'user': username,'role': self.users[username]['role'],'expires': expires,'ip': client_ip}
         
-        security_logger.info(f"Successful authentication: user '{username}' from {client_ip} (TTL: {ttl}s)")
+        sec_log.info(f"Successful authentication: user '{username}' from {client_ip} (TTL: {ttl}s)")
         return token
     
     def validate_token(self, token, client_ip):
         with self.lock:
             if token not in self.tokens:
-                security_logger.warning(f"Invalid token from {client_ip}")
+                sec_log.warning(f"Invalid token from {client_ip}")
                 return None
             
             token_data = self.tokens[token]
             if datetime.now() > token_data['expires']:
-                security_logger.warning(f"Expired token from {client_ip}")
+                sec_log.warning(f"Expired token from {client_ip}")
                 del self.tokens[token]
                 return None
             if token_data['ip'] != client_ip:
-                security_logger.warning(f"Token IP mismatch: expected {token_data['ip']}, got {client_ip}")
+                sec_log.warning(f"Token IP mismatch: expected {token_data['ip']}, got {client_ip}")
                 return None
             
             return token_data
@@ -169,8 +161,7 @@ class AuthenticationManager:
             if token in self.tokens:
                 del self.tokens[token]
 
-
-class ApplicationServer:
+class AppServer:
     def __init__(self, host, port):
         self.host = host
         self.port = port
@@ -178,9 +169,8 @@ class ApplicationServer:
         self.storage_servers = STORAGE_SERVERS.copy()
         self.index = 0
         self.lock = threading.Lock()
-        
-        self.security_monitor = SecurityMonitor()
-        self.auth_manager = AuthenticationManager()
+        self.security_monitor = SecMonitor()
+        self.auth_manager = AuthManager()
         
     def get_server(self):
         with self.lock:
@@ -197,7 +187,6 @@ class ApplicationServer:
             'LIST_FILES': [ROLE_ADMIN, ROLE_USER, ROLE_READONLY],
             'DELETE_FILE': [ROLE_ADMIN],
         }
-        
         return role in permissions.get(operation, [])
     
     def handle_client(self, client_socket, address):
@@ -206,20 +195,20 @@ class ApplicationServer:
         try:
             if self.security_monitor.is_blocked(client_ip):
                 logger.warning(f"Blocked IP attempted connection: {client_ip}")
-                error_response = {'status': 'ERROR', 'message': 'IP blocked'}
-                client_socket.send(json.dumps(error_response).encode())
+                err = {'status': 'ERROR', 'message': 'IP blocked'}
+                client_socket.send(json.dumps(err).encode())
                 return
             
             if self.security_monitor.is_locked_out(client_ip):
                 logger.warning(f"Locked out IP attempted connection: {client_ip}")
-                error_response = {'status': 'ERROR', 'message': 'Account locked. Try again later.'}
-                client_socket.send(json.dumps(error_response).encode())
+                err = {'status': 'ERROR', 'message': 'Account locked. Try again later.'}
+                client_socket.send(json.dumps(err).encode())
                 return
             
             if not self.security_monitor.check_rate_limit(client_ip):
                 logger.warning(f"Rate limit exceeded: {client_ip}")
-                error_response = {'status': 'ERROR', 'message': 'Rate limit exceeded'}
-                client_socket.send(json.dumps(error_response).encode())
+                err = {'status': 'ERROR', 'message': 'Rate limit exceeded'}
+                client_socket.send(json.dumps(err).encode())
                 return
             
             data = client_socket.recv(4096).decode()
@@ -232,28 +221,28 @@ class ApplicationServer:
             else:
                 token = request.get('token')
                 if not token:
-                    security_logger.warning(f"Missing token from {client_ip}")
+                    sec_log.warning(f"Missing token from {client_ip}")
                     response = {'status': 'ERROR', 'message': 'Authentication required'}
                 else:
                     token_data = self.auth_manager.validate_token(token, client_ip)
                     if not token_data:
                         response = {'status': 'ERROR', 'message': 'Invalid or expired token'}
                     elif not self.check_permission(operation, token_data['role']):
-                        security_logger.warning(f"Unauthorized access attempt: {token_data['user']} tried {operation}")
+                        sec_log.warning(f"Unauthorized access attempt: {token_data['user']} tried {operation}")
                         response = {'status': 'ERROR', 'message': 'Permission denied'}
                     else:
-                        response = self.handle_authorized_request(request, token_data)
+                        response = self.handle_req(request, token_data)
             
             client_socket.send(json.dumps(response).encode())
             
         except json.JSONDecodeError:
             logger.error(f"Invalid JSON from {client_ip}")
-            error_response = {'status': 'ERROR', 'message': 'Invalid request format'}
-            client_socket.send(json.dumps(error_response).encode())
+            err = {'status': 'ERROR', 'message': 'Invalid request format'}
+            client_socket.send(json.dumps(err).encode())
         except Exception as e:
             logger.error(f"Error handling client {client_ip}: {e}")
-            error_response = {'status': 'ERROR', 'message': str(e)}
-            client_socket.send(json.dumps(error_response).encode())
+            err = {'status': 'ERROR', 'message': str(e)}
+            client_socket.send(json.dumps(err).encode())
         finally:
             client_socket.close()
     
@@ -264,8 +253,8 @@ class ApplicationServer:
         if not username or not password:
             return {'status': 'ERROR', 'message': 'Username and password required'}
         
-        token_ttl = request.get('token_ttl')  # optional override (e.g. for testing)
-        token = self.auth_manager.authenticate(username, password, client_ip, token_ttl=token_ttl)
+        token_ttl = request.get('token_ttl')
+        token = self.auth_manager.auth(username, password, client_ip, token_ttl=token_ttl)
         
         if token:
             self.security_monitor.reset_failed_auth(client_ip)
@@ -273,10 +262,10 @@ class ApplicationServer:
         else:
             locked = self.security_monitor.record_failed_auth(client_ip)
             if locked:
-                return {'status': 'ERROR', 'message': f'Account locked for {LOCKOUT_DURATION} seconds'}
+                return {'status': 'ERROR', 'message': f'Account locked for {LOCKOUT_TIME} seconds'}
             return {'status': 'ERROR', 'message': 'Invalid credentials'}
     
-    def handle_authorized_request(self, request, token_data):
+    def handle_req(self, request, token_data):
         operation = request['operation']
         user = token_data['user']
         
@@ -323,11 +312,9 @@ class ApplicationServer:
     
     def handle_download(self, request, user):
         filename = request['filename']
-        
-        # IDOR / Path traversal check
         if '..' in filename or '/' in filename or '\\' in filename:
-            security_logger.warning(f"IDOR/Path traversal attempt by {user}: {filename}")
-            threat_logger.warning(f"THREAT: IDOR/Path traversal attempt | User: {user} | File: {filename}")
+            sec_log.warning(f"IDOR attempt by {user}: {filename}")
+            threat_log.warning(f"THREAT: IDOR attempt | User: {user} | File: {filename}")
             return {'status': 'ERROR', 'message': 'Invalid filename'}
         
         with self.lock:
@@ -366,8 +353,6 @@ class ApplicationServer:
         server_socket.listen(5)
         
         logger.info(f"Application Server started on {self.host}:{self.port}")
-        logger.info(f"Managing {len(self.storage_servers)} storage servers")
-        logger.info("Security features: Authentication, Authorization, Rate Limiting, Account Lockout")
         
         try:
             while True:
@@ -380,6 +365,5 @@ class ApplicationServer:
         finally:
             server_socket.close()
 
-
-server = ApplicationServer(APPLICATION_SERVER_HOST, APPLICATION_SERVER_PORT)
+server = AppServer(APP_HOST, APP_PORT)
 server.start()
