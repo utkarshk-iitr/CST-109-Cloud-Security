@@ -1,0 +1,14 @@
+2026-03-11 11:53:21,809 - StorageServer-storage_1 - INFO - Storage Server 'storage_1' started on 10.81.5.163:6001 (TLS enabled)
+2026-03-11 11:53:21,809 - StorageServer-storage_1 - INFO - Storage directory: /home/utk/Desktop/UtkKumar/CST-109-Cloud-Security/Lab_3/Assign3_Complete/storage_1
+2026-03-11 11:53:21,809 - StorageServer-storage_1 - INFO - Security features: Rate limiting, Integrity checking, Audit logging
+2026-03-11 11:53:21,809 - StorageServer-storage_1 - INFO - Max chunk size: 10.0 MB
+2026-03-11 11:58:58,282 - StorageServer-storage_1 - INFO - Request #1 from 10.81.32.45: STORE_CHUNK
+2026-03-11 11:58:58,283 - Audit-storage_1 - INFO - Request #1 | IP: 10.81.32.45 | Operation: STORE_CHUNK
+2026-03-11 11:58:58,320 - StorageServer-storage_1 - INFO - Stored chunk 0 of a.docx (194042 bytes)
+2026-03-11 11:58:58,320 - Audit-storage_1 - INFO - Request #1 | STORE | a.docx_chunk_0 | Size: 194042 | Checksum: 927d2c50939c311a... | IP: 10.81.32.45
+2026-03-11 12:00:51,694 - StorageServer-storage_1 - INFO - Request #2 from 10.81.32.45: RETRIEVE_CHUNK
+2026-03-11 12:00:51,694 - Audit-storage_1 - INFO - Request #2 | IP: 10.81.32.45 | Operation: RETRIEVE_CHUNK
+2026-03-11 12:00:51,718 - StorageServer-storage_1 - INFO - Sent chunk 0 of a.docx (194042 bytes)
+2026-03-11 12:00:51,718 - Audit-storage_1 - INFO - Request #2 | RETRIEVE | a.docx_chunk_0 | Size: 194042 | IP: 10.81.32.45
+2026-03-11 12:02:24,508 - StorageServer-storage_1 - INFO - Storage Server 'storage_1' shutting down...
+2026-03-11 12:02:24,508 - StorageServer-storage_1 - INFO - Total requests served: 2

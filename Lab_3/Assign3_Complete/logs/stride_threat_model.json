@@ -1,0 +1,111 @@
+{
+  "generated": "2026-03-11T12:37:16.638574",
+  "methodology": "STRIDE",
+  "threats": [
+    {
+      "id": "T-01",
+      "stride": "S",
+      "category": "Spoofing",
+      "title": "Credential Spoofing via Stolen Tokens",
+      "likelihood": 4,
+      "impact": 5,
+      "risk_score": 20,
+      "risk_level": "Critical"
+    },
+    {
+      "id": "T-04",
+      "stride": "T",
+      "category": "Tampering",
+      "title": "Request Payload Tampering (Path Traversal / IDOR)",
+      "likelihood": 4,
+      "impact": 5,
+      "risk_score": 20,
+      "risk_level": "Critical"
+    },
+    {
+      "id": "T-07",
+      "stride": "I",
+      "category": "Information Disclosure",
+      "title": "Sensitive Data Exposure over Plaintext TCP",
+      "likelihood": 4,
+      "impact": 5,
+      "risk_score": 20,
+      "risk_level": "Critical"
+    },
+    {
+      "id": "T-11",
+      "stride": "E",
+      "category": "Elevation of Privilege",
+      "title": "Privilege Escalation via Token Manipulation",
+      "likelihood": 4,
+      "impact": 5,
+      "risk_score": 20,
+      "risk_level": "Critical"
+    },
+    {
+      "id": "T-02",
+      "stride": "S",
+      "category": "Spoofing",
+      "title": "Identity Spoofing via Brute-Force Login",
+      "likelihood": 5,
+      "impact": 4,
+      "risk_score": 20,
+      "risk_level": "High"
+    },
+    {
+      "id": "T-09",
+      "stride": "D",
+      "category": "Denial of Service",
+      "title": "Denial of Service via Request Flooding",
+      "likelihood": 5,
+      "impact": 4,
+      "risk_score": 20,
+      "risk_level": "High"
+    },
+    {
+      "id": "T-12",
+      "stride": "E",
+      "category": "Elevation of Privilege",
+      "title": "Privilege Escalation via Unauthorized Operation Access",
+      "likelihood": 4,
+      "impact": 4,
+      "risk_score": 16,
+      "risk_level": "High"
+    },
+    {
+      "id": "T-03",
+      "stride": "T",
+      "category": "Tampering",
+      "title": "Chunk Data Tampering in Transit",
+      "likelihood": 2,
+      "impact": 5,
+      "risk_score": 10,
+      "risk_level": "Medium"
+    },
+    {
+      "id": "T-06",
+      "stride": "R",
+      "category": "Repudiation",
+      "title": "Action Repudiation \u2014 User Denies File Operations",
+      "likelihood": 3,
+      "impact": 3,
+      "risk_score": 9,
+      "risk_level": "Medium"
+    }
+  ],
+  "risk_distribution": {
+    "Critical": 4,
+    "High": 3,
+    "Medium": 2
+  },
+  "log_findings": {
+    "auth_success": 15,
+    "auth_failure": 30,
+    "brute_force": 3,
+    "rate_limit": 26,
+    "ip_blocked": 3,
+    "permission_denied": 12,
+    "integrity_violation": 4,
+    "dos_detected": 1
+  }
+}

@@ -13,12 +13,9 @@ THREATS = [
     ('T-02', 'S', 'Identity Spoofing via Brute-Force Login',                5, 4),
     ('T-03', 'T', 'Chunk Data Tampering in Transit',                        2, 5),
     ('T-04', 'T', 'Request Payload Tampering (Path Traversal / IDOR)',      4, 5),
-    ('T-05', 'R', 'Log Repudiation — Attacker Clears or Forges Logs',       2, 4),
     ('T-06', 'R', 'Action Repudiation — User Denies File Operations',       3, 3),
     ('T-07', 'I', 'Sensitive Data Exposure over Plaintext TCP',             4, 5),
-    ('T-08', 'I', 'Token Store Exposure via In-Memory Leakage',             2, 4),
     ('T-09', 'D', 'Denial of Service via Request Flooding',                 5, 4),
-    ('T-10', 'D', 'Storage Exhaustion via Large or Repeated Uploads',       3, 4),
     ('T-11', 'E', 'Privilege Escalation via Token Manipulation',            4, 5),
     ('T-12', 'E', 'Privilege Escalation via Unauthorized Operation Access', 4, 4),
 ]

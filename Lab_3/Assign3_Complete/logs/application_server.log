@@ -1,0 +1,165 @@
+2026-03-11 11:54:47,117 - AppServer - INFO - Application Server started on 10.81.5.163:5000 (TLS enabled)
+2026-03-11 11:56:13,035 - AppServer - INFO - Request from 10.81.5.163: LOGIN
+2026-03-11 11:56:13,035 - SecMonitor - INFO - Successful authentication: user 'user1' from 10.81.5.163 (TTL: 86400s)
+2026-03-11 11:58:58,249 - AppServer - INFO - Request from 10.81.5.163: UPLOAD_REQUEST
+2026-03-11 11:58:58,250 - AppServer - INFO - Authorized request: UPLOAD_REQUEST by user 'user1'
+2026-03-11 11:58:58,250 - AppServer - INFO - Upload request by user1: a.docx (194042 bytes, 1 chunks)
+2026-03-11 11:58:58,250 - AppServer - INFO -   Chunk 0 -> storage_1
+2026-03-11 11:58:58,700 - AppServer - INFO - Request from 10.81.5.163: UPLOAD_COMPLETE
+2026-03-11 11:58:58,700 - AppServer - INFO - Authorized request: UPLOAD_COMPLETE by user 'user1'
+2026-03-11 11:58:58,701 - AppServer - INFO - Upload complete by user1: a.docx - 1 chunks, 194042 bytes
+2026-03-11 11:59:19,793 - AppServer - INFO - Request from 10.81.5.163: UPLOAD_REQUEST
+2026-03-11 11:59:19,793 - AppServer - INFO - Authorized request: UPLOAD_REQUEST by user 'user1'
+2026-03-11 11:59:19,793 - AppServer - INFO - Upload request by user1: b.pdf (1549313 bytes, 2 chunks)
+2026-03-11 11:59:19,793 - AppServer - INFO -   Chunk 0 -> storage_2
+2026-03-11 11:59:19,793 - AppServer - INFO -   Chunk 1 -> storage_3
+2026-03-11 11:59:20,409 - AppServer - INFO - Request from 10.81.5.163: UPLOAD_COMPLETE
+2026-03-11 11:59:20,410 - AppServer - INFO - Authorized request: UPLOAD_COMPLETE by user 'user1'
+2026-03-11 11:59:20,410 - AppServer - INFO - Upload complete by user1: b.pdf - 2 chunks, 1549313 bytes
+2026-03-11 11:59:23,894 - AppServer - INFO - Request from 10.81.5.163: LIST_FILES
+2026-03-11 11:59:23,895 - AppServer - INFO - Authorized request: LIST_FILES by user 'user1'
+2026-03-11 11:59:23,895 - AppServer - INFO - List files request by user1 - 2 files
+2026-03-11 12:00:51,650 - AppServer - INFO - Request from 10.81.5.163: DOWNLOAD_REQUEST
+2026-03-11 12:00:51,650 - AppServer - INFO - Authorized request: DOWNLOAD_REQUEST by user 'user1'
+2026-03-11 12:00:51,650 - AppServer - INFO - Download request by user1: a.docx - 1 chunks
+2026-03-11 12:01:56,059 - AppServer - INFO - Request from 10.81.5.163: UPLOAD_REQUEST
+2026-03-11 12:01:56,059 - AppServer - INFO - Authorized request: UPLOAD_REQUEST by user 'user1'
+2026-03-11 12:01:56,059 - AppServer - INFO - Upload request by user1: c.csv (3900 bytes, 1 chunks)
+2026-03-11 12:01:56,059 - AppServer - INFO -   Chunk 0 -> storage_4
+2026-03-11 12:01:56,470 - AppServer - INFO - Request from 10.81.5.163: UPLOAD_COMPLETE
+2026-03-11 12:01:56,471 - AppServer - INFO - Authorized request: UPLOAD_COMPLETE by user 'user1'
+2026-03-11 12:01:56,471 - AppServer - INFO - Upload complete by user1: c.csv - 1 chunks, 3900 bytes
+2026-03-11 12:03:20,750 - AppServer - INFO - Request from 10.81.5.163: UPLOAD_REQUEST
+2026-03-11 12:03:20,751 - AppServer - INFO - Authorized request: UPLOAD_REQUEST by user 'user1'
+2026-03-11 12:03:20,751 - AppServer - INFO - Upload request by user1: d.csv (777 bytes, 1 chunks)
+2026-03-11 12:03:20,752 - AppServer - INFO -   Chunk 0 -> storage_1
+2026-03-11 12:04:19,934 - AppServer - INFO - Request from 10.81.5.163: DELETE_FILE
+2026-03-11 12:04:19,934 - SecMonitor - WARNING - Unauthorized access attempt: user1 tried DELETE_FILE
+2026-03-11 12:05:18,812 - AppServer - INFO - Request from 10.81.5.163: LOGIN
+2026-03-11 12:05:18,812 - SecMonitor - INFO - Successful authentication: user 'admin' from 10.81.5.163 (TTL: 86400s)
+2026-03-11 12:05:26,287 - AppServer - INFO - Request from 10.81.5.163: DELETE_FILE
+2026-03-11 12:05:26,287 - AppServer - INFO - Authorized request: DELETE_FILE by user 'admin'
+2026-03-11 12:05:26,288 - AppServer - INFO - File deleted by admin: a.docx
+2026-03-11 12:06:33,366 - AppServer - INFO - Request from 10.81.5.163: LOGIN
+2026-03-11 12:06:33,366 - SecMonitor - INFO - Successful authentication: user 'user1' from 10.81.5.163 (TTL: 1s)
+2026-03-11 12:06:35,924 - AppServer - INFO - Request from 10.81.5.163: LIST_FILES
+2026-03-11 12:06:35,924 - SecMonitor - WARNING - Expired token from 10.81.5.163
+2026-03-11 12:07:12,992 - AppServer - INFO - Request from 10.81.5.163: LOGIN
+2026-03-11 12:07:12,993 - SecMonitor - INFO - Successful authentication: user 'user1' from 10.81.5.163 (TTL: 86400s)
+2026-03-11 12:07:13,401 - AppServer - INFO - Request from 10.81.5.163: DELETE_FILE
+2026-03-11 12:07:13,401 - SecMonitor - WARNING - Unauthorized access attempt: user1 tried DELETE_FILE
+2026-03-11 12:07:13,907 - AppServer - INFO - Request from 10.81.5.163: DOWNLOAD_REQUEST
+2026-03-11 12:07:13,907 - AppServer - INFO - Authorized request: DOWNLOAD_REQUEST by user 'user1'
+2026-03-11 12:07:13,907 - SecMonitor - WARNING - IDOR attempt by user1: ../../../etc/passwd
+2026-03-11 12:07:13,908 - ThreatDetection - WARNING - THREAT: IDOR attempt | User: user1 | File: ../../../etc/passwd
+2026-03-11 12:07:14,523 - AppServer - INFO - Request from 10.81.5.163: LOGIN
+2026-03-11 12:07:14,523 - SecMonitor - INFO - Successful authentication: user 'readonly' from 10.81.5.163 (TTL: 86400s)
+2026-03-11 12:07:14,925 - AppServer - INFO - Request from 10.81.5.163: UPLOAD_REQUEST
+2026-03-11 12:07:14,925 - SecMonitor - WARNING - Unauthorized access attempt: readonly tried UPLOAD_REQUEST
+2026-03-11 12:07:15,340 - AppServer - INFO - Request from 10.81.5.163: LIST_FILES
+2026-03-11 12:07:15,340 - SecMonitor - WARNING - Missing token from 10.81.5.163
+2026-03-11 12:08:01,225 - AppServer - INFO - Request from 10.81.5.163: LIST_FILES
+2026-03-11 12:08:01,226 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:08:01,722 - AppServer - INFO - Request from 10.81.5.163: DELETE_FILE
+2026-03-11 12:08:01,723 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:08:02,234 - AppServer - INFO - Request from 10.81.5.163: UPLOAD_REQUEST
+2026-03-11 12:08:02,234 - SecMonitor - WARNING - Missing token from 10.81.5.163
+2026-03-11 12:08:02,647 - AppServer - INFO - Request from 10.81.5.163: DELETE_FILE
+2026-03-11 12:08:02,647 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:08:51,706 - AppServer - INFO - Request from 10.81.5.163: LOGIN
+2026-03-11 12:08:51,706 - SecMonitor - WARNING - Authentication failed: Invalid password for 'admin' from 10.81.5.163
+2026-03-11 12:08:51,706 - SecMonitor - WARNING - Failed authentication from 10.81.5.163 (count: 1)
+2026-03-11 12:08:52,217 - AppServer - INFO - Request from 10.81.5.163: LOGIN
+2026-03-11 12:08:52,217 - SecMonitor - WARNING - Authentication failed: Invalid password for 'admin' from 10.81.5.163
+2026-03-11 12:08:52,217 - SecMonitor - WARNING - Failed authentication from 10.81.5.163 (count: 2)
+2026-03-11 12:08:52,727 - AppServer - INFO - Request from 10.81.5.163: LOGIN
+2026-03-11 12:08:52,728 - SecMonitor - WARNING - Authentication failed: Invalid password for 'admin' from 10.81.5.163
+2026-03-11 12:08:52,728 - SecMonitor - WARNING - Failed authentication from 10.81.5.163 (count: 3)
+2026-03-11 12:08:53,241 - AppServer - INFO - Request from 10.81.5.163: LOGIN
+2026-03-11 12:08:53,241 - SecMonitor - WARNING - Authentication failed: Invalid password for 'admin' from 10.81.5.163
+2026-03-11 12:08:53,241 - SecMonitor - WARNING - Failed authentication from 10.81.5.163 (count: 4)
+2026-03-11 12:08:53,769 - AppServer - INFO - Request from 10.81.5.163: LOGIN
+2026-03-11 12:08:53,769 - SecMonitor - WARNING - Authentication failed: Invalid password for 'admin' from 10.81.5.163
+2026-03-11 12:08:53,770 - SecMonitor - WARNING - Failed authentication from 10.81.5.163 (count: 5)
+2026-03-11 12:08:53,770 - ThreatDetection - CRITICAL - IP 10.81.5.163 locked out due to 5 failed auth attempts
+2026-03-11 12:14:09,969 - AppServer - INFO - Request from 10.81.5.163: LIST_FILES
+2026-03-11 12:14:09,969 - AppServer - INFO - Authorized request: LIST_FILES by user 'admin'
+2026-03-11 12:14:09,969 - AppServer - INFO - List files request by admin - 2 files
+2026-03-11 12:14:39,223 - AppServer - INFO - Request from 10.81.5.163: LIST_FILES
+2026-03-11 12:14:39,223 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:39,462 - AppServer - INFO - Request from 10.81.5.163: LIST_FILES
+2026-03-11 12:14:39,462 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:39,529 - AppServer - INFO - Request from 10.81.5.163: LIST_FILES
+2026-03-11 12:14:39,530 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:39,569 - AppServer - INFO - Request from 10.81.5.163: LIST_FILES
+2026-03-11 12:14:39,569 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:39,809 - AppServer - INFO - Request from 10.81.5.163: LIST_FILES
+2026-03-11 12:14:39,809 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:43,495 - AppServer - INFO - Request from 10.81.5.163: LIST_FILES
+2026-03-11 12:14:43,495 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:43,575 - AppServer - INFO - Request from 10.81.5.163: LIST_FILES
+2026-03-11 12:14:43,575 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:43,821 - AppServer - INFO - Request from 10.81.5.163: LIST_FILES
+2026-03-11 12:14:43,821 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:43,998 - AppServer - INFO - Request from 10.81.5.163: LIST_FILES
+2026-03-11 12:14:43,998 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:44,385 - AppServer - INFO - Request from 10.81.5.163: LIST_FILES
+2026-03-11 12:14:44,386 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:48,012 - AppServer - INFO - Request from 10.81.5.163: LIST_FILES
+2026-03-11 12:14:48,012 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:48,079 - AppServer - INFO - Request from 10.81.5.163: LIST_FILES
+2026-03-11 12:14:48,080 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:48,103 - AppServer - INFO - Request from 10.81.5.163: LIST_FILES
+2026-03-11 12:14:48,103 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:48,443 - AppServer - INFO - Request from 10.81.5.163: LIST_FILES
+2026-03-11 12:14:48,443 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:48,657 - AppServer - INFO - Request from 10.81.5.163: LIST_FILES
+2026-03-11 12:14:48,658 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:52,058 - AppServer - INFO - Request from 10.81.5.163: LIST_FILES
+2026-03-11 12:14:52,058 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:52,392 - AppServer - INFO - Request from 10.81.5.163: LIST_FILES
+2026-03-11 12:14:52,392 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:52,658 - AppServer - INFO - Request from 10.81.5.163: LIST_FILES
+2026-03-11 12:14:52,658 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:52,685 - AppServer - INFO - Request from 10.81.5.163: LIST_FILES
+2026-03-11 12:14:52,685 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:53,178 - AppServer - INFO - Request from 10.81.5.163: LIST_FILES
+2026-03-11 12:14:53,179 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:56,455 - AppServer - INFO - Request from 10.81.5.163: LIST_FILES
+2026-03-11 12:14:56,455 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:56,569 - AppServer - INFO - Request from 10.81.5.163: LIST_FILES
+2026-03-11 12:14:56,569 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:56,840 - AppServer - INFO - Request from 10.81.5.163: LIST_FILES
+2026-03-11 12:14:56,840 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:56,978 - AppServer - INFO - Request from 10.81.5.163: LIST_FILES
+2026-03-11 12:14:56,978 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:57,219 - AppServer - INFO - Request from 10.81.5.163: LIST_FILES
+2026-03-11 12:14:57,219 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:15:00,386 - AppServer - INFO - Request from 10.81.5.163: LIST_FILES
+2026-03-11 12:15:00,386 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:15:00,456 - AppServer - INFO - Request from 10.81.5.163: LIST_FILES
+2026-03-11 12:15:00,457 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:15:00,486 - AppServer - INFO - Request from 10.81.5.163: LIST_FILES
+2026-03-11 12:15:00,487 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:15:00,499 - AppServer - INFO - Request from 10.81.5.163: LIST_FILES
+2026-03-11 12:15:00,500 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:15:38,121 - AppServer - INFO - Request from 10.81.5.163: LIST_FILES
+2026-03-11 12:15:38,122 - AppServer - INFO - Authorized request: LIST_FILES by user 'admin'
+2026-03-11 12:15:38,122 - AppServer - INFO - List files request by admin - 2 files
+2026-03-11 12:15:51,661 - AppServer - INFO - Request from 10.81.5.163: LOGIN
+2026-03-11 12:15:51,661 - SecMonitor - WARNING - Authentication failed: Invalid password for 'admin' from 10.81.5.163
+2026-03-11 12:15:51,661 - SecMonitor - WARNING - Failed authentication from 10.81.5.163 (count: 1)
+2026-03-11 12:15:52,269 - AppServer - INFO - Request from 10.81.5.163: LOGIN
+2026-03-11 12:15:52,270 - SecMonitor - WARNING - Authentication failed: Invalid password for 'admin' from 10.81.5.163
+2026-03-11 12:15:52,270 - SecMonitor - WARNING - Failed authentication from 10.81.5.163 (count: 2)
+2026-03-11 12:15:52,781 - AppServer - INFO - Request from 10.81.5.163: LOGIN
+2026-03-11 12:15:52,781 - SecMonitor - WARNING - Authentication failed: Invalid password for 'admin' from 10.81.5.163
+2026-03-11 12:15:52,781 - SecMonitor - WARNING - Failed authentication from 10.81.5.163 (count: 3)
+2026-03-11 12:15:53,396 - AppServer - INFO - Request from 10.81.5.163: LOGIN
+2026-03-11 12:15:53,397 - SecMonitor - WARNING - Authentication failed: Invalid password for 'admin' from 10.81.5.163
+2026-03-11 12:15:53,397 - SecMonitor - WARNING - Failed authentication from 10.81.5.163 (count: 4)
+2026-03-11 12:15:53,903 - AppServer - INFO - Request from 10.81.5.163: LOGIN
+2026-03-11 12:15:53,903 - SecMonitor - WARNING - Authentication failed: Invalid password for 'admin' from 10.81.5.163
+2026-03-11 12:15:53,903 - SecMonitor - WARNING - Failed authentication from 10.81.5.163 (count: 5)
+2026-03-11 12:15:53,904 - ThreatDetection - CRITICAL - IP 10.81.5.163 locked out due to 5 failed auth attempts
+2026-03-11 12:18:54,381 - AppServer - INFO - Application Server shutting down...

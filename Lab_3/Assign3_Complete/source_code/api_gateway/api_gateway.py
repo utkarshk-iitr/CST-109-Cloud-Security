@@ -21,9 +21,9 @@ SERVER_CERT = os.path.join(CERT_DIR, 'server.crt')
 SERVER_KEY  = os.path.join(CERT_DIR, 'server.key')
 CA_CERT     = os.path.join(CERT_DIR, 'server.crt')
 
-GATEWAY_HOST = '127.0.0.1'
+GATEWAY_HOST = '10.81.5.163'
 GATEWAY_PORT = 8080
-APP_HOST = '127.0.0.1'
+APP_HOST = '10.81.5.163'
 APP_PORT = 5000
 
 LOG_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'

@@ -1,0 +1,68 @@
+2026-03-11 12:04:19,936 - GW-Threat - WARNING - THREAT: Unauthorized access attempt (IDOR) | IP: 10.81.32.45 | Operation: DELETE_FILE
+2026-03-11 12:06:35,927 - GW-Threat - WARNING - THREAT: Invalid/tampered token | IP: 10.81.32.45 | Operation: LIST_FILES
+2026-03-11 12:07:13,404 - GW-Threat - WARNING - THREAT: Unauthorized access attempt (IDOR) | IP: 10.81.32.45 | Operation: DELETE_FILE
+2026-03-11 12:07:13,908 - ThreatDetection - WARNING - THREAT: IDOR attempt | User: user1 | File: ../../../etc/passwd
+2026-03-11 12:07:14,928 - GW-Threat - WARNING - THREAT: Unauthorized access attempt (IDOR) | IP: 10.81.32.45 | Operation: UPLOAD_REQUEST
+2026-03-11 12:07:15,342 - GW-Threat - WARNING - THREAT: Invalid/tampered token | IP: 10.81.32.45 | Operation: LIST_FILES
+2026-03-11 12:08:01,228 - GW-Threat - WARNING - THREAT: Invalid/tampered token | IP: 10.81.32.45 | Operation: LIST_FILES
+2026-03-11 12:08:01,725 - GW-Threat - WARNING - THREAT: Invalid/tampered token | IP: 10.81.32.45 | Operation: DELETE_FILE
+2026-03-11 12:08:02,236 - GW-Threat - WARNING - THREAT: Invalid/tampered token | IP: 10.81.32.45 | Operation: UPLOAD_REQUEST
+2026-03-11 12:08:02,650 - GW-Threat - WARNING - THREAT: Invalid/tampered token | IP: 10.81.32.45 | Operation: DELETE_FILE
+2026-03-11 12:08:52,731 - GW-Threat - WARNING - THREAT: Suspicious login activity | IP: 10.81.32.45 | Failed attempts: 3 | Target user: admin
+2026-03-11 12:08:53,245 - GW-Threat - WARNING - THREAT: Suspicious login activity | IP: 10.81.32.45 | Failed attempts: 4 | Target user: admin
+2026-03-11 12:08:53,770 - ThreatDetection - CRITICAL - IP 10.81.5.163 locked out due to 5 failed auth attempts
+2026-03-11 12:08:53,773 - GW-Threat - CRITICAL - THREAT: Brute-force attack detected | IP: 10.81.32.45 | Failed attempts: 5 | Target user: admin
+2026-03-11 12:14:39,226 - GW-Threat - WARNING - THREAT: Invalid/tampered token | IP: 10.81.32.45 | Operation: LIST_FILES
+2026-03-11 12:14:39,464 - GW-Threat - WARNING - THREAT: Invalid/tampered token | IP: 10.81.32.45 | Operation: LIST_FILES
+2026-03-11 12:14:39,532 - GW-Threat - WARNING - THREAT: Invalid/tampered token | IP: 10.81.32.45 | Operation: LIST_FILES
+2026-03-11 12:14:39,571 - GW-Threat - WARNING - THREAT: Invalid/tampered token | IP: 10.81.32.45 | Operation: LIST_FILES
+2026-03-11 12:14:39,811 - GW-Threat - WARNING - THREAT: Invalid/tampered token | IP: 10.81.32.45 | Operation: LIST_FILES
+2026-03-11 12:14:43,497 - GW-Threat - WARNING - THREAT: Invalid/tampered token | IP: 10.81.32.45 | Operation: LIST_FILES
+2026-03-11 12:14:43,577 - GW-Threat - WARNING - THREAT: Invalid/tampered token | IP: 10.81.32.45 | Operation: LIST_FILES
+2026-03-11 12:14:43,823 - GW-Threat - WARNING - THREAT: Invalid/tampered token | IP: 10.81.32.45 | Operation: LIST_FILES
+2026-03-11 12:14:44,002 - GW-Threat - WARNING - THREAT: Invalid/tampered token | IP: 10.81.32.45 | Operation: LIST_FILES
+2026-03-11 12:14:44,396 - GW-Threat - WARNING - THREAT: Invalid/tampered token | IP: 10.81.32.45 | Operation: LIST_FILES
+2026-03-11 12:14:48,013 - GW-Threat - WARNING - THREAT: Invalid/tampered token | IP: 10.81.32.45 | Operation: LIST_FILES
+2026-03-11 12:14:48,082 - GW-Threat - WARNING - THREAT: Invalid/tampered token | IP: 10.81.32.45 | Operation: LIST_FILES
+2026-03-11 12:14:48,105 - GW-Threat - WARNING - THREAT: Invalid/tampered token | IP: 10.81.32.45 | Operation: LIST_FILES
+2026-03-11 12:14:48,445 - GW-Threat - WARNING - THREAT: Invalid/tampered token | IP: 10.81.32.45 | Operation: LIST_FILES
+2026-03-11 12:14:48,660 - GW-Threat - WARNING - THREAT: Invalid/tampered token | IP: 10.81.32.45 | Operation: LIST_FILES
+2026-03-11 12:14:52,061 - GW-Threat - WARNING - THREAT: Invalid/tampered token | IP: 10.81.32.45 | Operation: LIST_FILES
+2026-03-11 12:14:52,395 - GW-Threat - WARNING - THREAT: Invalid/tampered token | IP: 10.81.32.45 | Operation: LIST_FILES
+2026-03-11 12:14:52,661 - GW-Threat - WARNING - THREAT: Invalid/tampered token | IP: 10.81.32.45 | Operation: LIST_FILES
+2026-03-11 12:14:52,687 - GW-Threat - WARNING - THREAT: Invalid/tampered token | IP: 10.81.32.45 | Operation: LIST_FILES
+2026-03-11 12:14:53,181 - GW-Threat - WARNING - THREAT: Invalid/tampered token | IP: 10.81.32.45 | Operation: LIST_FILES
+2026-03-11 12:14:56,456 - GW-Threat - WARNING - THREAT: Invalid/tampered token | IP: 10.81.32.45 | Operation: LIST_FILES
+2026-03-11 12:14:56,571 - GW-Threat - WARNING - THREAT: Invalid/tampered token | IP: 10.81.32.45 | Operation: LIST_FILES
+2026-03-11 12:14:56,842 - GW-Threat - WARNING - THREAT: Invalid/tampered token | IP: 10.81.32.45 | Operation: LIST_FILES
+2026-03-11 12:14:56,980 - GW-Threat - WARNING - THREAT: Invalid/tampered token | IP: 10.81.32.45 | Operation: LIST_FILES
+2026-03-11 12:14:57,229 - GW-Threat - WARNING - THREAT: Invalid/tampered token | IP: 10.81.32.45 | Operation: LIST_FILES
+2026-03-11 12:14:57,319 - GW-Threat - WARNING - THREAT: Rate limit exceeded | IP: 10.81.32.45
+2026-03-11 12:14:57,340 - GW-Threat - WARNING - THREAT: Rate limit exceeded | IP: 10.81.32.45
+2026-03-11 12:14:57,362 - GW-Threat - WARNING - THREAT: Rate limit exceeded | IP: 10.81.32.45
+2026-03-11 12:14:57,385 - GW-Threat - WARNING - THREAT: Rate limit exceeded | IP: 10.81.32.45
+2026-03-11 12:14:57,407 - GW-Threat - WARNING - THREAT: Rate limit exceeded | IP: 10.81.32.45
+2026-03-11 12:15:00,388 - GW-Threat - WARNING - THREAT: Invalid/tampered token | IP: 10.81.32.45 | Operation: LIST_FILES
+2026-03-11 12:15:00,459 - GW-Threat - WARNING - THREAT: Invalid/tampered token | IP: 10.81.32.45 | Operation: LIST_FILES
+2026-03-11 12:15:00,489 - GW-Threat - WARNING - THREAT: Invalid/tampered token | IP: 10.81.32.45 | Operation: LIST_FILES
+2026-03-11 12:15:00,491 - GW-Threat - WARNING - THREAT: Rate limit exceeded | IP: 10.81.32.45
+2026-03-11 12:15:00,502 - GW-Threat - WARNING - THREAT: Invalid/tampered token | IP: 10.81.32.45 | Operation: LIST_FILES
+2026-03-11 12:15:00,504 - GW-Threat - WARNING - THREAT: Rate limit exceeded | IP: 10.81.32.45
+2026-03-11 12:15:00,514 - GW-Threat - WARNING - THREAT: Rate limit exceeded | IP: 10.81.32.45
+2026-03-11 12:15:00,524 - GW-Threat - WARNING - THREAT: Rate limit exceeded | IP: 10.81.32.45
+2026-03-11 12:15:00,535 - GW-Threat - WARNING - THREAT: Rate limit exceeded | IP: 10.81.32.45
+2026-03-11 12:15:00,545 - GW-Threat - WARNING - THREAT: Rate limit exceeded | IP: 10.81.32.45
+2026-03-11 12:15:00,554 - GW-Threat - WARNING - THREAT: Rate limit exceeded | IP: 10.81.32.45
+2026-03-11 12:15:00,564 - GW-Threat - WARNING - THREAT: Rate limit exceeded | IP: 10.81.32.45
+2026-03-11 12:15:00,577 - GW-Threat - WARNING - THREAT: Rate limit exceeded | IP: 10.81.32.45
+2026-03-11 12:15:00,587 - GW-Threat - WARNING - THREAT: Rate limit exceeded | IP: 10.81.32.45
+2026-03-11 12:15:00,598 - GW-Threat - WARNING - THREAT: Rate limit exceeded | IP: 10.81.32.45
+2026-03-11 12:15:00,993 - GW-Threat - WARNING - THREAT: Rate limit exceeded | IP: 10.81.32.45
+2026-03-11 12:15:01,004 - GW-Threat - WARNING - THREAT: Rate limit exceeded | IP: 10.81.32.45
+2026-03-11 12:15:01,014 - GW-Threat - WARNING - THREAT: Rate limit exceeded | IP: 10.81.32.45
+2026-03-11 12:15:01,023 - GW-Threat - WARNING - THREAT: Rate limit exceeded | IP: 10.81.32.45
+2026-03-11 12:15:01,032 - GW-Threat - WARNING - THREAT: Rate limit exceeded | IP: 10.81.32.45
+2026-03-11 12:15:52,784 - GW-Threat - WARNING - THREAT: Suspicious login activity | IP: 10.81.32.45 | Failed attempts: 3 | Target user: admin
+2026-03-11 12:15:53,399 - GW-Threat - WARNING - THREAT: Suspicious login activity | IP: 10.81.32.45 | Failed attempts: 4 | Target user: admin
+2026-03-11 12:15:53,904 - ThreatDetection - CRITICAL - IP 10.81.5.163 locked out due to 5 failed auth attempts
+2026-03-11 12:15:53,906 - GW-Threat - CRITICAL - THREAT: Brute-force attack detected | IP: 10.81.32.45 | Failed attempts: 5 | Target user: admin

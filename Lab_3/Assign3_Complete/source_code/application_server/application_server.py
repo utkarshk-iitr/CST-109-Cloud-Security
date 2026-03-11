@@ -20,13 +20,13 @@ SERVER_CERT = os.path.join(CERT_DIR, 'server.crt')
 SERVER_KEY  = os.path.join(CERT_DIR, 'server.key')
 
 STORAGE_SERVERS = [
-    {'host': '127.0.0.1', 'port': 6001, 'id': 'storage_1'},
-    {'host': '127.0.0.1', 'port': 6002, 'id': 'storage_2'},
-    {'host': '127.0.0.1', 'port': 6003, 'id': 'storage_3'},
-    {'host': '127.0.0.1', 'port': 6004, 'id': 'storage_4'},
+    {'host': '10.81.5.163', 'port': 6001, 'id': 'storage_1'},
+    {'host': '10.81.5.163', 'port': 6002, 'id': 'storage_2'},
+    {'host': '10.81.32.45', 'port': 6003, 'id': 'storage_3'},
+    {'host': '10.81.32.45', 'port': 6004, 'id': 'storage_4'},
 ]
 
-APP_HOST = '127.0.0.1'
+APP_HOST = '10.81.5.163'
 APP_PORT = 5000
 
 MAX_REQ_PER_MIN = 60

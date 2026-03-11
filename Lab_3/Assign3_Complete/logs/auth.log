@@ -1,0 +1,79 @@
+2026-03-11 11:56:13,035 - SecMonitor - INFO - Successful authentication: user 'user1' from 10.81.5.163 (TTL: 86400s)
+2026-03-11 11:56:13,038 - GW-Auth - INFO - AUTH SUCCESS | User: user1 | IP: 10.81.32.45
+2026-03-11 12:04:19,934 - SecMonitor - WARNING - Unauthorized access attempt: user1 tried DELETE_FILE
+2026-03-11 12:05:18,812 - SecMonitor - INFO - Successful authentication: user 'admin' from 10.81.5.163 (TTL: 86400s)
+2026-03-11 12:05:18,815 - GW-Auth - INFO - AUTH SUCCESS | User: admin | IP: 10.81.32.45
+2026-03-11 12:06:33,366 - SecMonitor - INFO - Successful authentication: user 'user1' from 10.81.5.163 (TTL: 1s)
+2026-03-11 12:06:33,369 - GW-Auth - INFO - AUTH SUCCESS | User: user1 | IP: 10.81.32.45
+2026-03-11 12:06:35,924 - SecMonitor - WARNING - Expired token from 10.81.5.163
+2026-03-11 12:07:12,993 - SecMonitor - INFO - Successful authentication: user 'user1' from 10.81.5.163 (TTL: 86400s)
+2026-03-11 12:07:12,995 - GW-Auth - INFO - AUTH SUCCESS | User: user1 | IP: 10.81.32.45
+2026-03-11 12:07:13,401 - SecMonitor - WARNING - Unauthorized access attempt: user1 tried DELETE_FILE
+2026-03-11 12:07:13,907 - SecMonitor - WARNING - IDOR attempt by user1: ../../../etc/passwd
+2026-03-11 12:07:14,523 - SecMonitor - INFO - Successful authentication: user 'readonly' from 10.81.5.163 (TTL: 86400s)
+2026-03-11 12:07:14,525 - GW-Auth - INFO - AUTH SUCCESS | User: readonly | IP: 10.81.32.45
+2026-03-11 12:07:14,925 - SecMonitor - WARNING - Unauthorized access attempt: readonly tried UPLOAD_REQUEST
+2026-03-11 12:07:15,340 - SecMonitor - WARNING - Missing token from 10.81.5.163
+2026-03-11 12:08:01,226 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:08:01,723 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:08:02,234 - SecMonitor - WARNING - Missing token from 10.81.5.163
+2026-03-11 12:08:02,647 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:08:51,706 - SecMonitor - WARNING - Authentication failed: Invalid password for 'admin' from 10.81.5.163
+2026-03-11 12:08:51,706 - SecMonitor - WARNING - Failed authentication from 10.81.5.163 (count: 1)
+2026-03-11 12:08:51,708 - GW-Auth - WARNING - AUTH FAILED | User: admin | IP: 10.81.32.45 | Reason: Invalid credentials
+2026-03-11 12:08:52,217 - SecMonitor - WARNING - Authentication failed: Invalid password for 'admin' from 10.81.5.163
+2026-03-11 12:08:52,217 - SecMonitor - WARNING - Failed authentication from 10.81.5.163 (count: 2)
+2026-03-11 12:08:52,220 - GW-Auth - WARNING - AUTH FAILED | User: admin | IP: 10.81.32.45 | Reason: Invalid credentials
+2026-03-11 12:08:52,728 - SecMonitor - WARNING - Authentication failed: Invalid password for 'admin' from 10.81.5.163
+2026-03-11 12:08:52,728 - SecMonitor - WARNING - Failed authentication from 10.81.5.163 (count: 3)
+2026-03-11 12:08:52,730 - GW-Auth - WARNING - AUTH FAILED | User: admin | IP: 10.81.32.45 | Reason: Invalid credentials
+2026-03-11 12:08:53,241 - SecMonitor - WARNING - Authentication failed: Invalid password for 'admin' from 10.81.5.163
+2026-03-11 12:08:53,241 - SecMonitor - WARNING - Failed authentication from 10.81.5.163 (count: 4)
+2026-03-11 12:08:53,244 - GW-Auth - WARNING - AUTH FAILED | User: admin | IP: 10.81.32.45 | Reason: Invalid credentials
+2026-03-11 12:08:53,769 - SecMonitor - WARNING - Authentication failed: Invalid password for 'admin' from 10.81.5.163
+2026-03-11 12:08:53,770 - SecMonitor - WARNING - Failed authentication from 10.81.5.163 (count: 5)
+2026-03-11 12:08:53,772 - GW-Auth - WARNING - AUTH FAILED | User: admin | IP: 10.81.32.45 | Reason: Account locked for 300 seconds
+2026-03-11 12:14:39,223 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:39,462 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:39,530 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:39,569 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:39,809 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:43,495 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:43,575 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:43,821 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:43,998 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:44,386 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:48,012 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:48,080 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:48,103 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:48,443 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:48,658 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:52,058 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:52,392 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:52,658 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:52,685 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:53,179 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:56,455 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:56,569 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:56,840 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:56,978 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:14:57,219 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:15:00,386 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:15:00,457 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:15:00,487 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:15:00,500 - SecMonitor - WARNING - Invalid token from 10.81.5.163
+2026-03-11 12:15:51,661 - SecMonitor - WARNING - Authentication failed: Invalid password for 'admin' from 10.81.5.163
+2026-03-11 12:15:51,661 - SecMonitor - WARNING - Failed authentication from 10.81.5.163 (count: 1)
+2026-03-11 12:15:51,663 - GW-Auth - WARNING - AUTH FAILED | User: admin | IP: 10.81.32.45 | Reason: Invalid credentials
+2026-03-11 12:15:52,270 - SecMonitor - WARNING - Authentication failed: Invalid password for 'admin' from 10.81.5.163
+2026-03-11 12:15:52,270 - SecMonitor - WARNING - Failed authentication from 10.81.5.163 (count: 2)
+2026-03-11 12:15:52,272 - GW-Auth - WARNING - AUTH FAILED | User: admin | IP: 10.81.32.45 | Reason: Invalid credentials
+2026-03-11 12:15:52,781 - SecMonitor - WARNING - Authentication failed: Invalid password for 'admin' from 10.81.5.163
+2026-03-11 12:15:52,781 - SecMonitor - WARNING - Failed authentication from 10.81.5.163 (count: 3)
+2026-03-11 12:15:52,783 - GW-Auth - WARNING - AUTH FAILED | User: admin | IP: 10.81.32.45 | Reason: Invalid credentials
+2026-03-11 12:15:53,397 - SecMonitor - WARNING - Authentication failed: Invalid password for 'admin' from 10.81.5.163
+2026-03-11 12:15:53,397 - SecMonitor - WARNING - Failed authentication from 10.81.5.163 (count: 4)
+2026-03-11 12:15:53,399 - GW-Auth - WARNING - AUTH FAILED | User: admin | IP: 10.81.32.45 | Reason: Invalid credentials
+2026-03-11 12:15:53,903 - SecMonitor - WARNING - Authentication failed: Invalid password for 'admin' from 10.81.5.163
+2026-03-11 12:15:53,903 - SecMonitor - WARNING - Failed authentication from 10.81.5.163 (count: 5)
+2026-03-11 12:15:53,906 - GW-Auth - WARNING - AUTH FAILED | User: admin | IP: 10.81.32.45 | Reason: Account locked for 300 seconds

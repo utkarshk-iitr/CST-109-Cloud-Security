@@ -6,7 +6,7 @@ import math
 import time
 import threading
 
-GATEWAY_HOST = '127.0.0.1'
+GATEWAY_HOST = '10.81.5.163'
 GATEWAY_PORT = 8080
 CHUNK_SIZE = 1024 * 1024
 

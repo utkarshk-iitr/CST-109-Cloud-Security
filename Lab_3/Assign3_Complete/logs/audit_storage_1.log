@@ -1,0 +1,4 @@
+2026-03-11 11:58:58,283 - Audit-storage_1 - INFO - Request #1 | IP: 10.81.32.45 | Operation: STORE_CHUNK
+2026-03-11 11:58:58,320 - Audit-storage_1 - INFO - Request #1 | STORE | a.docx_chunk_0 | Size: 194042 | Checksum: 927d2c50939c311a... | IP: 10.81.32.45
+2026-03-11 12:00:51,694 - Audit-storage_1 - INFO - Request #2 | IP: 10.81.32.45 | Operation: RETRIEVE_CHUNK
+2026-03-11 12:00:51,718 - Audit-storage_1 - INFO - Request #2 | RETRIEVE | a.docx_chunk_0 | Size: 194042 | IP: 10.81.32.45

@@ -1,0 +1,10 @@
+2026-03-11 11:54:12,967 - StorageServer-storage_4 - INFO - Storage Server 'storage_4' started on 10.81.32.45:6004 (TLS enabled)
+2026-03-11 11:54:12,967 - StorageServer-storage_4 - INFO - Storage directory: /Users/adesh/Desktop/vs/CST-109-Cloud-Security/Lab_3/Assign3_Complete/storage_4
+2026-03-11 11:54:12,967 - StorageServer-storage_4 - INFO - Security features: Rate limiting, Integrity checking, Audit logging
+2026-03-11 11:54:12,967 - StorageServer-storage_4 - INFO - Max chunk size: 10.0 MB
+2026-03-11 12:01:56,062 - StorageServer-storage_4 - INFO - Request #1 from 10.81.32.45: STORE_CHUNK
+2026-03-11 12:01:56,063 - Audit-storage_4 - INFO - Request #1 | IP: 10.81.32.45 | Operation: STORE_CHUNK
+2026-03-11 12:01:56,066 - StorageServer-storage_4 - INFO - Stored chunk 0 of c.csv (3900 bytes)
+2026-03-11 12:01:56,066 - Audit-storage_4 - INFO - Request #1 | STORE | c.csv_chunk_0 | Size: 3900 | Checksum: 0a08675db2e441cf... | IP: 10.81.32.45
+2026-03-11 12:20:26,755 - StorageServer-storage_4 - INFO - Storage Server 'storage_4' shutting down...
+2026-03-11 12:20:26,758 - StorageServer-storage_4 - INFO - Total requests served: 1

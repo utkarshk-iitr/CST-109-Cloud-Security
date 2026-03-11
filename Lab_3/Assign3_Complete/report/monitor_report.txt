@@ -1,0 +1,63 @@
+---------------------
+SECURITY MONITORING REPORT
+Generated: 2026-03-11 12:32:03
+Log Directory: /home/utk/Desktop/UtkKumar/CST-109-Cloud-Security/Lab_3/Assign3_Complete/logs
+
+LOG FILES (13 files)
+---------------------
+    application_server.log                      14578 bytes
+    audit_storage_1.log                           488 bytes
+    audit_storage_2.log                           257 bytes
+    audit_storage_3.log                           256 bytes
+    audit_storage_4.log                           254 bytes
+    auth.log                                     7623 bytes
+    gateway.log                                 11356 bytes
+    mitigation.log                               6975 bytes
+    storage_1.log                                1573 bytes
+    storage_2.log                                1142 bytes
+    storage_3.log                                1137 bytes
+    storage_4.log                                1133 bytes
+    threats.log                                  7817 bytes
+    TOTAL                                       54589 bytes
+
+---------------------
+AUTHENTICATION EVENTS (140 total)
+    2026-03-11 12:08:53,245 - GW-Threat - WARNING - THREAT: Suspicious login activity | IP: 10.81.32.45 | Failed attempts: 4 | Target user: admin
+    2026-03-11 12:08:53,770 - ThreatDetection - CRITICAL - IP 10.81.5.163 locked out due to 5 failed auth attempts
+    2026-03-11 12:15:52,784 - GW-Threat - WARNING - THREAT: Suspicious login activity | IP: 10.81.32.45 | Failed attempts: 3 | Target user: admin
+    2026-03-11 12:15:53,399 - GW-Threat - WARNING - THREAT: Suspicious login activity | IP: 10.81.32.45 | Failed attempts: 4 | Target user: admin
+    2026-03-11 12:15:53,904 - ThreatDetection - CRITICAL - IP 10.81.5.163 locked out due to 5 failed auth attempts
+    ... (135 earlier events not shown)
+
+---------------------
+THREAT DETECTION EVENTS (73 total)
+    2026-03-11 12:15:01,032 - GW-Threat - WARNING - THREAT: Rate limit exceeded | IP: 10.81.32.45
+    2026-03-11 12:15:52,784 - GW-Threat - WARNING - THREAT: Suspicious login activity | IP: 10.81.32.45 | Failed attempts: 3 | Target user: admin
+    2026-03-11 12:15:53,399 - GW-Threat - WARNING - THREAT: Suspicious login activity | IP: 10.81.32.45 | Failed attempts: 4 | Target user: admin
+    2026-03-11 12:15:53,904 - ThreatDetection - CRITICAL - IP 10.81.5.163 locked out due to 5 failed auth attempts
+    2026-03-11 12:15:53,906 - GW-Threat - CRITICAL - THREAT: Brute-force attack detected | IP: 10.81.32.45 | Failed attempts: 5 | Target user: admin
+    ... (68 earlier events not shown)
+
+---------------------
+MITIGATION ACTIONS (88 total)
+    2026-03-11 12:15:00,993 - GW-Threat - WARNING - THREAT: Rate limit exceeded | IP: 10.81.32.45
+    2026-03-11 12:15:01,004 - GW-Threat - WARNING - THREAT: Rate limit exceeded | IP: 10.81.32.45
+    2026-03-11 12:15:01,014 - GW-Threat - WARNING - THREAT: Rate limit exceeded | IP: 10.81.32.45
+    2026-03-11 12:15:01,023 - GW-Threat - WARNING - THREAT: Rate limit exceeded | IP: 10.81.32.45
+    2026-03-11 12:15:01,032 - GW-Threat - WARNING - THREAT: Rate limit exceeded | IP: 10.81.32.45
+    ... (83 earlier events not shown)
+
+------------------------------------------
+SUMMARY
+  Total log entries:        564
+  Authentication events:    140
+  Threat detection events:  73
+  Mitigation actions:       88
+
+  Login successes:          15
+  Login failures:           58
+  IP blocks triggered:      3
+  Account lockouts:         5
+  Rate limit enforcements:  26
+
+  System Status: THREATS DETECTED - Review threat logs

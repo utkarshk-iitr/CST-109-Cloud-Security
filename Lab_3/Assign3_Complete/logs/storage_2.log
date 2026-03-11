@@ -1,0 +1,10 @@
+2026-03-11 11:53:33,576 - StorageServer-storage_2 - INFO - Storage Server 'storage_2' started on 10.81.5.163:6002 (TLS enabled)
+2026-03-11 11:53:33,576 - StorageServer-storage_2 - INFO - Storage directory: /home/utk/Desktop/UtkKumar/CST-109-Cloud-Security/Lab_3/Assign3_Complete/storage_2
+2026-03-11 11:53:33,576 - StorageServer-storage_2 - INFO - Security features: Rate limiting, Integrity checking, Audit logging
+2026-03-11 11:53:33,576 - StorageServer-storage_2 - INFO - Max chunk size: 10.0 MB
+2026-03-11 11:59:19,841 - StorageServer-storage_2 - INFO - Request #1 from 10.81.32.45: STORE_CHUNK
+2026-03-11 11:59:19,842 - Audit-storage_2 - INFO - Request #1 | IP: 10.81.32.45 | Operation: STORE_CHUNK
+2026-03-11 11:59:20,005 - StorageServer-storage_2 - INFO - Stored chunk 0 of b.pdf (1048576 bytes)
+2026-03-11 11:59:20,006 - Audit-storage_2 - INFO - Request #1 | STORE | b.pdf_chunk_0 | Size: 1048576 | Checksum: 353da7952029abb1... | IP: 10.81.32.45
+2026-03-11 12:19:02,756 - StorageServer-storage_2 - INFO - Storage Server 'storage_2' shutting down...
+2026-03-11 12:19:02,756 - StorageServer-storage_2 - INFO - Total requests served: 1

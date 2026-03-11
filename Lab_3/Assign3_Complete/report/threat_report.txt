@@ -1,0 +1,24 @@
+
+STRIDE Threat Model  |  2026-03-11 12:37:16
+------------------------------------------------------------
+  T-01  [S] Credential Spoofing via Stolen Tokens          Critical (20/25)
+  T-04  [T] Request Payload Tampering (Path Traversal / IDOR)  Critical (20/25)
+  T-07  [I] Sensitive Data Exposure over Plaintext TCP     Critical (20/25)
+  T-11  [E] Privilege Escalation via Token Manipulation    Critical (20/25)
+  T-02  [S] Identity Spoofing via Brute-Force Login        High (20/25)
+  T-09  [D] Denial of Service via Request Flooding         High (20/25)
+  T-12  [E] Privilege Escalation via Unauthorized Operation Access  High (16/25)
+  T-03  [T] Chunk Data Tampering in Transit                Medium (10/25)
+  T-06  [R] Action Repudiation — User Denies File Operations  Medium (9/25)
+------------------------------------------------------------
+  Critical    : 4
+  High        : 3
+  Medium      : 2
+
+Log Evidence:
+  Auth failures    : 30
+  Brute-force      : 3
+  DoS detections   : 1
+  IP blocks        : 3
+  Authz denials    : 12
+  Integrity viol.  : 4

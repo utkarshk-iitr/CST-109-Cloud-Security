@@ -1,0 +1,10 @@
+2026-03-11 11:53:54,167 - StorageServer-storage_3 - INFO - Storage Server 'storage_3' started on 10.81.32.45:6003 (TLS enabled)
+2026-03-11 11:53:54,167 - StorageServer-storage_3 - INFO - Storage directory: /Users/adesh/Desktop/vs/CST-109-Cloud-Security/Lab_3/Assign3_Complete/storage_3
+2026-03-11 11:53:54,167 - StorageServer-storage_3 - INFO - Security features: Rate limiting, Integrity checking, Audit logging
+2026-03-11 11:53:54,167 - StorageServer-storage_3 - INFO - Max chunk size: 10.0 MB
+2026-03-11 11:59:19,994 - StorageServer-storage_3 - INFO - Request #1 from 10.81.32.45: STORE_CHUNK
+2026-03-11 11:59:19,995 - Audit-storage_3 - INFO - Request #1 | IP: 10.81.32.45 | Operation: STORE_CHUNK
+2026-03-11 11:59:20,002 - StorageServer-storage_3 - INFO - Stored chunk 1 of b.pdf (500737 bytes)
+2026-03-11 11:59:20,002 - Audit-storage_3 - INFO - Request #1 | STORE | b.pdf_chunk_1 | Size: 500737 | Checksum: c2ff2434b1223680... | IP: 10.81.32.45
+2026-03-11 12:01:28,085 - StorageServer-storage_3 - INFO - Storage Server 'storage_3' shutting down...
+2026-03-11 12:01:28,087 - StorageServer-storage_3 - INFO - Total requests served: 1
