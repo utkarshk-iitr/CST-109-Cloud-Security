@@ -10,17 +10,7 @@ ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 if ROOT_DIR not in sys.path:
     sys.path.insert(0, ROOT_DIR)
 
-from common.config import (
-    BACKEND_SERVERS,
-    BLOCK_IP_SECONDS,
-    GATEWAY_HOST,
-    GATEWAY_PORT,
-    IAM_HOST,
-    IAM_PORT,
-    INVALID_TOKEN_THRESHOLD,
-    JWT_SECRET,
-    MAX_REQ_PER_MIN,
-)
+from common.config import (BACKEND_SERVERS, BLOCK_IP_SECONDS, GATEWAY_HOST, GATEWAY_PORT, IAM_HOST, IAM_PORT, INVALID_TOKEN_THRESHOLD, JWT_SECRET, MAX_REQ_PER_MIN)
 from common.jwt_utils import verify_jwt
 from common.logger_utils import get_logger
 from common.socket_utils import recv_json, send_json
@@ -31,7 +21,6 @@ access_log = get_logger("GW-Access", "access.log")
 threat_log = get_logger("GW-Threat", "threats.log")
 mitigation_log = get_logger("GW-Mitigation", "mitigation.log")
 
-
 class APIGateway:
     def __init__(self):
         self.lock = threading.Lock()
@@ -40,17 +29,12 @@ class APIGateway:
         self.blocked_ips = {}
         self.backends = cycle(BACKEND_SERVERS)
 
-        self.permissions = {
-            "GET_PROFILE": {"admin", "user"},
-            "GET_ADMIN_REPORT": {"admin"},
-        }
+        self.permissions = {"GET_PROFILE": {"admin", "user"}, "GET_ADMIN_REPORT": {"admin"}}
 
     def _check_rate_limit(self, client_ip):
         now = time.time()
         with self.lock:
-            self.request_times[client_ip] = [
-                ts for ts in self.request_times[client_ip] if now - ts < 60
-            ]
+            self.request_times[client_ip] = [ts for ts in self.request_times[client_ip] if now - ts < 60]
             if len(self.request_times[client_ip]) >= MAX_REQ_PER_MIN:
                 return False
             self.request_times[client_ip].append(now)
@@ -72,12 +56,7 @@ class APIGateway:
             count = self.invalid_token_counts[client_ip]
             if count >= INVALID_TOKEN_THRESHOLD:
                 self.blocked_ips[client_ip] = time.time() + BLOCK_IP_SECONDS
-                mitigation_log.critical(
-                    "IP BLOCKED | ip=%s reason=invalid_token threshold=%s duration=%ss",
-                    client_ip,
-                    INVALID_TOKEN_THRESHOLD,
-                    BLOCK_IP_SECONDS,
-                )
+                mitigation_log.critical("IP BLOCKED | ip=%s reason=invalid_token threshold=%s duration=%ss",client_ip,INVALID_TOKEN_THRESHOLD,BLOCK_IP_SECONDS)
                 return True
             return False
 
@@ -105,12 +84,7 @@ class APIGateway:
             if response.get("status") == "SUCCESS":
                 auth_log.info("LOGIN SUCCESS | user=%s ip=%s", username, client_ip)
             else:
-                auth_log.warning(
-                    "LOGIN FAILED | user=%s ip=%s reason=%s",
-                    username,
-                    client_ip,
-                    response.get("message", "unknown"),
-                )
+                auth_log.warning("LOGIN FAILED | user=%s ip=%s reason=%s",username,client_ip,response.get("message", "unknown"))
         return response
 
     def _authorize(self, request, client_ip):
@@ -125,12 +99,7 @@ class APIGateway:
         valid, payload = verify_jwt(token, JWT_SECRET)
         if not valid:
             blocked = self._record_invalid_token(client_ip)
-            access_log.warning(
-                "UNAUTHORIZED | ip=%s op=%s reason=%s",
-                client_ip,
-                operation,
-                payload,
-            )
+            access_log.warning("UNAUTHORIZED | ip=%s op=%s reason=%s",client_ip,operation,payload)
             threat_log.warning("THREAT | ip=%s op=%s type=invalid_token", client_ip, operation)
             if blocked:
                 return None, {"status": "ERROR", "message": "IP blocked due to repeated invalid tokens"}
@@ -140,29 +109,11 @@ class APIGateway:
 
         role = payload.get("role")
         if role not in self.permissions.get(operation, set()):
-            access_log.warning(
-                "UNAUTHORIZED | user=%s role=%s ip=%s op=%s reason=rbac",
-                payload.get("sub"),
-                role,
-                client_ip,
-                operation,
-            )
-            threat_log.warning(
-                "THREAT | user=%s role=%s ip=%s op=%s type=unauthorized_access",
-                payload.get("sub"),
-                role,
-                client_ip,
-                operation,
-            )
+            access_log.warning("UNAUTHORIZED | user=%s role=%s ip=%s op=%s reason=rbac",payload.get("sub"),role,client_ip,operation)
+            threat_log.warning("THREAT | user=%s role=%s ip=%s op=%s type=unauthorized_access",payload.get("sub"),role,client_ip,operation)
             return None, {"status": "ERROR", "message": "Permission denied"}
 
-        access_log.info(
-            "AUTHORIZED | user=%s role=%s ip=%s op=%s",
-            payload.get("sub"),
-            role,
-            client_ip,
-            operation,
-        )
+        access_log.info("AUTHORIZED | user=%s role=%s ip=%s op=%s",payload.get("sub"),role,client_ip,operation)
         return payload, None
 
     def _handle_client(self, conn, addr):
@@ -229,6 +180,4 @@ class APIGateway:
         finally:
             server.close()
 
-
-if __name__ == "__main__":
-    APIGateway().start()
+APIGateway().start()

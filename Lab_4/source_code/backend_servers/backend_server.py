@@ -11,7 +11,6 @@ if ROOT_DIR not in sys.path:
 from common.logger_utils import get_logger
 from common.socket_utils import recv_json, send_json
 
-
 class BackendServer:
     def __init__(self, server_id, host, port):
         self.server_id = server_id
@@ -26,29 +25,15 @@ class BackendServer:
 
         if operation == "GET_PROFILE":
             self.log.info("AUTHORIZED | user=%s role=%s op=%s", user, role, operation)
-            return {
-                "status": "SUCCESS",
-                "server": self.server_id,
-                "data": {
-                    "message": f"Hello {user}, profile data from {self.server_id}",
-                    "timestamp": int(time.time()),
-                },
-            }
+            return {"status": "SUCCESS","server": self.server_id,
+                "data": {"message": f"Hello {user}, profile data from {self.server_id}","timestamp": int(time.time())}}
 
         if operation == "GET_ADMIN_REPORT":
             if role != "admin":
                 self.log.warning("UNAUTHORIZED | user=%s role=%s op=%s", user, role, operation)
                 return {"status": "ERROR", "message": "Permission denied"}
             self.log.info("AUTHORIZED | user=%s role=%s op=%s", user, role, operation)
-            return {
-                "status": "SUCCESS",
-                "server": self.server_id,
-                "data": {
-                    "active_users": 7,
-                    "security_alerts": 2,
-                    "uptime_minutes": 123,
-                },
-            }
+            return {"status": "SUCCESS","server": self.server_id,"data": {"active_users": 7,"security_alerts": 2,"uptime_minutes": 123}}
 
         if operation == "PING":
             return {"status": "SUCCESS", "server": self.server_id, "message": "Backend alive"}
@@ -84,13 +69,11 @@ class BackendServer:
         finally:
             server.close()
 
+if len(sys.argv) != 3:
+    print("Usage: python3 backend_servers/backend_server.py <id> <port>")
+    sys.exit(1)
 
-if __name__ == "__main__":
-    if len(sys.argv) != 3:
-        print("Usage: python3 backend_servers/backend_server.py <id> <port>")
-        sys.exit(1)
-
-    server_id = f"backend_{sys.argv[1]}"
-    host = "127.0.0.1"
-    port = int(sys.argv[2])
-    BackendServer(server_id, host, port).start()
+server_id = f"backend_{sys.argv[1]}"
+host = "127.0.0.1"
+port = int(sys.argv[2])
+BackendServer(server_id, host, port).start()

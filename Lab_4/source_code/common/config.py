@@ -15,7 +15,7 @@ BACKEND_SERVERS = [
     {"id": "backend_2", "host": "127.0.0.1", "port": 7002},
 ]
 
-JWT_SECRET = "lab4-super-secret-change-me"
+JWT_SECRET = "abra_cadabra_gili_gili_chhoo"
 JWT_EXP_SECONDS = 180
 
 MAX_LOGIN_ATTEMPTS = 5

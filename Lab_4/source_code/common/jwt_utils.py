@@ -4,7 +4,6 @@ import hmac
 import json
 import time
 
-
 def _b64url_encode(raw_bytes):
     return base64.urlsafe_b64encode(raw_bytes).rstrip(b"=").decode("ascii")
 
@@ -29,7 +28,6 @@ def create_jwt(payload, secret, expires_in):
     signature_b64 = _b64url_encode(signature)
 
     return f"{header_b64}.{payload_b64}.{signature_b64}"
-
 
 def verify_jwt(token, secret):
     try:

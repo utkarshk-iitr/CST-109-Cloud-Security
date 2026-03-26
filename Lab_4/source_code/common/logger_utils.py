@@ -1,10 +1,8 @@
 import logging
 import os
-
 from common.config import LOG_DIR
 
 LOG_FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-
 
 def get_logger(name, filename, level=logging.INFO):
     logger = logging.getLogger(name)
