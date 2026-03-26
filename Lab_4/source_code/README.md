@@ -1,4 +1,4 @@
-# Lab 4: Distributed IAM with API Gateway, JWT, RBAC, and Attack Mitigation
+# Lab 4: Distributed IAM
 
 This implementation extends the Lab 3 style architecture into an IAM-focused distributed system:
 
@@ -36,4 +36,8 @@ python3 api_gateway/api_gateway.py
 
 5) Client
 python3 client/client.py
-## made with love by UK & adeu
+
+## Authors -
+
+Utkarsh Kumar
+Adesh Palkar

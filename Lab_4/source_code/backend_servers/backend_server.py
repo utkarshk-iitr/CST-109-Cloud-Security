@@ -1,24 +1,17 @@
 import socket
 import sys
 import threading
-import os
 import time
+from common.utils import *
 
-ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-if ROOT_DIR not in sys.path:
-    sys.path.insert(0, ROOT_DIR)
-
-from common.logger_utils import get_logger
-from common.socket_utils import recv_json, send_json
-
-class BackendServer:
+class BackServer:
     def __init__(self, server_id, host, port):
         self.server_id = server_id
         self.host = host
         self.port = port
         self.log = get_logger(f"Backend-{server_id}", f"{server_id}.log")
 
-    def _handle_business_request(self, request):
+    def handle_req(self, request):
         operation = request.get("operation")
         user = request.get("user", "unknown")
         role = request.get("role", "unknown")
@@ -40,11 +33,11 @@ class BackendServer:
 
         return {"status": "ERROR", "message": "Unsupported backend operation"}
 
-    def _handle_client(self, conn, addr):
+    def handle_client(self, conn, addr):
         client_ip = addr[0]
         try:
             request = recv_json(conn)
-            response = self._handle_business_request(request)
+            response = self.handle_req(request)
             send_json(conn, response)
         except Exception as exc:
             self.log.error("Request handling error from %s: %s", client_ip, exc)
@@ -62,7 +55,7 @@ class BackendServer:
         try:
             while True:
                 conn, addr = server.accept()
-                thread = threading.Thread(target=self._handle_client, args=(conn, addr), daemon=True)
+                thread = threading.Thread(target=self.handle_client, args=(conn, addr), daemon=True)
                 thread.start()
         except KeyboardInterrupt:
             self.log.info("%s shutting down", self.server_id)
@@ -76,4 +69,4 @@ if len(sys.argv) != 3:
 server_id = f"backend_{sys.argv[1]}"
 host = "127.0.0.1"
 port = int(sys.argv[2])
-BackendServer(server_id, host, port).start()
+BackServer(server_id, host, port).start()
