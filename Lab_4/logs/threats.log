@@ -1,0 +1,7 @@
+2026-03-26 17:27:32,602 - GW-Threat - WARNING - THREAT | user=me role=user ip=127.0.0.1 op=GET_ADMIN_REPORT type=unauthorized_access
+2026-03-26 17:27:46,268 - GW-Threat - WARNING - THREAT | ip=127.0.0.1 op=GET_ADMIN_REPORT type=invalid_token
+2026-03-26 17:27:46,375 - GW-Threat - WARNING - THREAT | ip=127.0.0.1 op=GET_ADMIN_REPORT type=invalid_token
+2026-03-26 17:27:46,482 - GW-Threat - WARNING - THREAT | ip=127.0.0.1 op=GET_ADMIN_REPORT type=invalid_token
+2026-03-26 17:27:46,586 - GW-Threat - WARNING - THREAT | ip=127.0.0.1 op=GET_ADMIN_REPORT type=invalid_token
+2026-03-26 17:27:46,692 - GW-Threat - WARNING - THREAT | ip=127.0.0.1 op=GET_ADMIN_REPORT type=missing_token
+2026-03-26 17:27:46,798 - GW-Threat - WARNING - THREAT | ip=127.0.0.1 op=GET_ADMIN_REPORT type=invalid_token

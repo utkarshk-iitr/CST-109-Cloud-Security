@@ -1,0 +1,8 @@
+2026-03-26 17:27:30,631 - GW-Access - INFO - AUTHORIZED | user=me role=user ip=127.0.0.1 op=GET_PROFILE
+2026-03-26 17:27:32,602 - GW-Access - WARNING - UNAUTHORIZED | user=me role=user ip=127.0.0.1 op=GET_ADMIN_REPORT reason=rbac
+2026-03-26 17:27:46,268 - GW-Access - WARNING - UNAUTHORIZED | ip=127.0.0.1 op=GET_ADMIN_REPORT reason=Invalid token
+2026-03-26 17:27:46,375 - GW-Access - WARNING - UNAUTHORIZED | ip=127.0.0.1 op=GET_ADMIN_REPORT reason=Invalid signature
+2026-03-26 17:27:46,482 - GW-Access - WARNING - UNAUTHORIZED | ip=127.0.0.1 op=GET_ADMIN_REPORT reason=Invalid token
+2026-03-26 17:27:46,586 - GW-Access - WARNING - UNAUTHORIZED | ip=127.0.0.1 op=GET_ADMIN_REPORT reason=Invalid signature
+2026-03-26 17:27:46,692 - GW-Access - WARNING - UNAUTHORIZED | ip=127.0.0.1 op=GET_ADMIN_REPORT reason=missing_token
+2026-03-26 17:27:46,798 - GW-Access - WARNING - UNAUTHORIZED | ip=127.0.0.1 op=GET_ADMIN_REPORT reason=Invalid signature

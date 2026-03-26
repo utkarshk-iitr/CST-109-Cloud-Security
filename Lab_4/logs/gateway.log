@@ -1,0 +1,19 @@
+2026-03-26 17:26:55,755 - Gateway - INFO - API Gateway started at 127.0.0.1:8081
+2026-03-26 17:26:55,755 - Gateway - INFO - IAM backend at 127.0.0.1:5001
+2026-03-26 17:26:55,755 - Gateway - INFO - Resource backends: [{'id': 'backend_1', 'host': '127.0.0.1', 'port': 7001}, {'id': 'backend_2', 'host': '127.0.0.1', 'port': 7002}]
+2026-03-26 17:27:18,660 - Gateway - INFO - REQUEST | ip=127.0.0.1 op=REGISTER
+2026-03-26 17:27:26,846 - Gateway - INFO - REQUEST | ip=127.0.0.1 op=LOGIN
+2026-03-26 17:27:30,630 - Gateway - INFO - REQUEST | ip=127.0.0.1 op=GET_PROFILE
+2026-03-26 17:27:32,602 - Gateway - INFO - REQUEST | ip=127.0.0.1 op=GET_ADMIN_REPORT
+2026-03-26 17:27:38,805 - Gateway - INFO - REQUEST | ip=127.0.0.1 op=LOGIN
+2026-03-26 17:27:38,912 - Gateway - INFO - REQUEST | ip=127.0.0.1 op=LOGIN
+2026-03-26 17:27:39,019 - Gateway - INFO - REQUEST | ip=127.0.0.1 op=LOGIN
+2026-03-26 17:27:39,124 - Gateway - INFO - REQUEST | ip=127.0.0.1 op=LOGIN
+2026-03-26 17:27:39,232 - Gateway - INFO - REQUEST | ip=127.0.0.1 op=LOGIN
+2026-03-26 17:27:46,267 - Gateway - INFO - REQUEST | ip=127.0.0.1 op=GET_ADMIN_REPORT
+2026-03-26 17:27:46,374 - Gateway - INFO - REQUEST | ip=127.0.0.1 op=GET_ADMIN_REPORT
+2026-03-26 17:27:46,482 - Gateway - INFO - REQUEST | ip=127.0.0.1 op=GET_ADMIN_REPORT
+2026-03-26 17:27:46,586 - Gateway - INFO - REQUEST | ip=127.0.0.1 op=GET_ADMIN_REPORT
+2026-03-26 17:27:46,692 - Gateway - INFO - REQUEST | ip=127.0.0.1 op=GET_ADMIN_REPORT
+2026-03-26 17:27:46,797 - Gateway - INFO - REQUEST | ip=127.0.0.1 op=GET_ADMIN_REPORT
+2026-03-26 17:28:25,622 - Gateway - INFO - Gateway shutting down
