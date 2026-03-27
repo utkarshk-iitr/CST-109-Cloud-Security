@@ -1,3 +1,0 @@
-2026-03-26 17:26:37,272 - Backend-backend_1 - INFO - backend_1 started at 127.0.0.1:7001
-2026-03-26 17:27:30,632 - Backend-backend_1 - INFO - AUTHORIZED | user=me role=user op=GET_PROFILE
-2026-03-26 17:28:32,398 - Backend-backend_1 - INFO - backend_1 shutting down

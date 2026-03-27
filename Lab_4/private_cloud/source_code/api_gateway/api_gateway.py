@@ -20,7 +20,7 @@ class APIGateway:
         self.blocked_ips = {}
         self.backends = cycle(BACKEND_SERVERS)
 
-        self.permissions = {"GET_PROFILE": {"admin", "user"}, "GET_ADMIN_REPORT": {"admin"}}
+        self.perm = {"GET_PROFILE": {"admin", "user"}, "GET_ADMIN_REPORT": {"admin"}}
 
     def check_rate(self, client_ip):
         now = time.time()
@@ -99,7 +99,7 @@ class APIGateway:
         self.recorc_valid(client_ip)
 
         role = payload.get("role")
-        if role not in self.permissions.get(operation, set()):
+        if role not in self.perm.get(operation, set()):
             access_log.warning("UNAUTHORIZED | user=%s role=%s ip=%s op=%s reason=rbac",payload.get("sub"),role,client_ip,operation)
             threat_log.warning("THREAT | user=%s role=%s ip=%s op=%s type=unauthorized_access",payload.get("sub"),role,client_ip,operation)
             return None, {"status": "ERROR", "message": "Permission denied"}

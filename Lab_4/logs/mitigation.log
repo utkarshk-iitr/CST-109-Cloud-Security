@@ -1,2 +1,0 @@
-2026-03-26 17:27:39,233 - IAM-Mitigation - CRITICAL - ACCOUNT LOCKOUT | user=admin ip=127.0.0.1 attempts=5 lock_seconds=300
-2026-03-26 17:27:46,798 - GW-Mitigation - CRITICAL - IP BLOCKED | ip=127.0.0.1 reason=invalid_token threshold=5 duration=300s
