@@ -1,2 +1,0 @@
-azure-functions
-PyJWT>=2.8.0
