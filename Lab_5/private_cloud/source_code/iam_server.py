@@ -5,8 +5,8 @@ import socket
 import ssl
 import threading
 import time
-from common.config import *
-from common.utils import *
+from config import *
+from utils import *
 
 app_log = get_logger("IAM", "iam_server.log")
 auth_log = get_logger("IAM-Auth", "auth.log")

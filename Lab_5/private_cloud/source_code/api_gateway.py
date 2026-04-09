@@ -4,9 +4,8 @@ import threading
 import time
 from collections import defaultdict
 from itertools import cycle
-from common.config import *
-from common.key_manager import initialize_key_ring, rotate_key
-from common.utils import *
+from config import *
+from utils import *
 
 gw_log = get_logger("Gateway", "gateway.log")
 auth_log = get_logger("GW-Auth", "auth.log")

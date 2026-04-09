@@ -1,7 +1,7 @@
 import json
 import time
-from common.config import *
-from common.utils import *
+from config import *
+from utils import *
 
 class Client:
     def __init__(self):

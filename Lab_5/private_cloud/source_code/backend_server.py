@@ -6,9 +6,8 @@ import sys
 import threading
 import time
 from cryptography.fernet import Fernet
-from common.config import STORAGE_DIR
-from common.key_manager import get_active_key, get_all_keys, get_key, initialize_key_ring
-from common.utils import *
+from config import *
+from utils import *
 
 
 class BackServer:
