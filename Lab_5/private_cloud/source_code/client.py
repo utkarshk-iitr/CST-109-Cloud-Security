@@ -61,7 +61,7 @@ class Client:
             return
 
         now = int(time.time())
-        if now - self.last_renewed_at >= TOKEN_RENEW_INTERVAL_SECONDS:
+        if now - self.last_renewed_at >= RENEW_TIME:
             self.renew_token()
 
     def get_profile(self):

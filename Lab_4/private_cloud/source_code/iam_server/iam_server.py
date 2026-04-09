@@ -73,17 +73,17 @@ class IAMServer:
                 attempts = user["failed_attempts"]
                 auth_log.warning("LOGIN FAILED | user=%s ip=%s reason=bad_password attempt=%s",un,client_ip,attempts)
                 if attempts >= MAX_LOGIN_ATTEMPTS:
-                    user["lock_until"] = now + ACCOUNT_LOCK_SECONDS
-                    mitg_log.critical("ACCOUNT LOCKOUT | user=%s ip=%s attempts=%s lock_seconds=%s",un,client_ip,attempts,ACCOUNT_LOCK_SECONDS)
-                    return {"status": "ERROR","message": f"Account locked for {ACCOUNT_LOCK_SECONDS} seconds"}
+                    user["lock_until"] = now + LOCK_SEC
+                    mitg_log.critical("ACCOUNT LOCKOUT | user=%s ip=%s attempts=%s lock_seconds=%s",un,client_ip,attempts,LOCK_SEC)
+                    return {"status": "ERROR","message": f"Account locked for {LOCK_SEC} seconds"}
                 return {"status": "ERROR", "message": "Invalid credentials"}
 
             user["failed_attempts"] = 0
             user["lock_until"] = 0
-            token = create_jwt({"sub": un, "role": user["role"]}, JWT_SECRET, JWT_EXP_SECONDS)
+            token = create_jwt({"sub": un, "role": user["role"]}, JWT_SECRET, JWT_EXP)
 
         auth_log.info("LOGIN SUCCESS | user=%s role=%s ip=%s", un, user["role"], client_ip)
-        return {"status": "SUCCESS","message": "Login successful","token": token,"role": user["role"],"expires_in": JWT_EXP_SECONDS}
+        return {"status": "SUCCESS","message": "Login successful","token": token,"role": user["role"],"expires_in": JWT_EXP}
 
     def handle_client(self, conn, addr):
         client_ip = addr[0]

@@ -37,7 +37,7 @@ class APIGateway:
         now = time.time()
         with self.lock:
             self.req_time[client_ip] = [ts for ts in self.req_time[client_ip] if now - ts < 60]
-            if len(self.req_time[client_ip]) >= MAX_REQ_PER_MIN:
+            if len(self.req_time[client_ip]) >= REQ_MIN:
                 return False
             self.req_time[client_ip].append(now)
             return True
@@ -56,9 +56,9 @@ class APIGateway:
         with self.lock:
             self.inv_cnt[client_ip] += 1
             count = self.inv_cnt[client_ip]
-            if count >= INVALID_TOKEN_THRESHOLD:
-                self.blocked_ips[client_ip] = time.time() + BLOCK_IP_SECONDS
-                mitg_log.critical("IP BLOCKED | ip=%s reason=invalid_token threshold=%s duration=%ss",client_ip,INVALID_TOKEN_THRESHOLD,BLOCK_IP_SECONDS)
+            if count >= INV_THRESHOLD:
+                self.blocked_ips[client_ip] = time.time() + LOCK_SEC
+                mitg_log.critical("IP BLOCKED | ip=%s reason=invalid_token threshold=%s duration=%ss",client_ip,INV_THRESHOLD,LOCK_SEC)
                 return True
             return False
 
@@ -70,19 +70,19 @@ class APIGateway:
         with self.lock:
             self.user_inv_cnt[username] += 1
             count = self.user_inv_cnt[username]
-            if count >= USER_UNAUTHORIZED_THRESHOLD:
-                self.user_blocked_until[username] = time.time() + USER_BLOCK_SECONDS
+            if count >= UNAUTH_THRESHOLD:
+                self.user_blocked_until[username] = time.time() + LOCK_SEC
                 self.user_node_restrict[username] = {
                     "deny_nodes": {"backend_2"},
-                    "until": time.time() + RESTRICT_NODE_SECONDS,
+                    "until": time.time() + LOCK_SEC,
                 }
                 mitg_log.critical(
-                    "USER BLOCKED | user=%s ip=%s reason=%s threshold=%s block_seconds=%s",
+                    "USER BLOCKED | user=%s ip=%s reason=%s threshold=%s LOCK_SEConds=%s",
                     username,
                     client_ip,
                     reason,
-                    USER_UNAUTHORIZED_THRESHOLD,
-                    USER_BLOCK_SECONDS,
+                    UNAUTH_THRESHOLD,
+                    LOCK_SEC,
                 )
                 return True
             return False
@@ -113,7 +113,7 @@ class APIGateway:
                 )
                 self.user_node_restrict[username] = {
                     "deny_nodes": {"backend_2"},
-                    "until": time.time() + RESTRICT_NODE_SECONDS,
+                    "until": time.time() + LOCK_SEC,
                 }
 
     def cleanup_state(self):
@@ -141,9 +141,9 @@ class APIGateway:
 
     def rotate_keys_worker(self):
         while True:
-            time.sleep(KEY_ROTATION_SECONDS)
+            time.sleep(KEY_SEC)
             new_key_id = rotate_key()
-            mitg_log.info("KEY ROTATION | new_key_id=%s interval_seconds=%s", new_key_id, KEY_ROTATION_SECONDS)
+            mitg_log.info("KEY ROTATION | new_key_id=%s interval_seconds=%s", new_key_id, KEY_SEC)
 
     def get_restricted_nodes(self, username):
         with self.lock:

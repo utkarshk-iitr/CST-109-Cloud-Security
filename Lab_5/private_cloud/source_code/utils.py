@@ -135,21 +135,15 @@ def verify_jwt(token, secret):
 
 
 def build_tls_server_context():
-    if not TLS_ENABLED:
-        return None
-
     context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
     context.load_cert_chain(certfile=TLS_CERT_FILE, keyfile=TLS_KEY_FILE)
     return context
 
 
 def build_tls_client_context():
-    if not TLS_ENABLED:
-        return None
-
     context = ssl.create_default_context(ssl.Purpose.SERVER_AUTH)
     if TLS_VERIFY_SERVER:
-        context.load_verify_locations(cafile=TLS_CA_FILE)
+        context.load_verify_locations(cafile=TLS_CERT_FILE)
         context.check_hostname = False
         context.verify_mode = ssl.CERT_REQUIRED
     else:
@@ -165,7 +159,7 @@ def open_outbound_socket(host, port, timeout=8):
 
     client_tls = build_tls_client_context()
     if client_tls is not None:
-        return client_tls.wrap_socket(sock, server_hostname=TLS_SERVER_NAME)
+        return client_tls.wrap_socket(sock, server_hostname="localhost")
     return sock
 
 LOG_FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"

@@ -29,7 +29,7 @@ STORAGE_SERVERS = [
 APP_HOST = '10.81.5.163'
 APP_PORT = 5000
 
-MAX_REQ_PER_MIN = 60
+REQ_MIN = 60
 MAX_FAILED_AUTH = 5
 LOCKOUT_TIME = 300
 TOKEN_EXPIRY = 3600*24
@@ -71,7 +71,7 @@ class SecMonitor:
             now = time.time()
             self.request_history[client_ip] = [ts for ts in self.request_history[client_ip] if now - ts < 60]
             
-            if len(self.request_history[client_ip]) >= MAX_REQ_PER_MIN:
+            if len(self.request_history[client_ip]) >= REQ_MIN:
                 threat_log.warning(f"Rate limit exceeded for {client_ip}")
                 return False
             

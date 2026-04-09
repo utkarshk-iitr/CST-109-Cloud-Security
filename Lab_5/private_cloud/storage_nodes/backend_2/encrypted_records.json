@@ -1,0 +1,16 @@
+{
+  "profiles": {
+    "admin": {
+      "key_id": "key-1775761248",
+      "ciphertext": "gAAAAABp1_dhkKSd1RIbQWZPlz09sKrAf6ol23cW1pYmPbp3kXQZ9EZ3e32jYlKjauKweIJ9qWYpdKadBsaV8l2ViJFwZZm4JllI-vmnBWxxxp-KM4iP4P5oI7mpe814qEjTBp7y07vPw49MMFK-ud185U2nYWvQFz3925p1uefr3arjcPw-C-E="
+    },
+    "user1": {
+      "key_id": "key-1775761248",
+      "ciphertext": "gAAAAABp1_dhI-B1IgxbJ0xt_h1qSChFR_uTnLGeSCr3IPVKb-8Yp9Zs2-LVtu-vkklLuSULHmuEC34RwPhpSD0omZSx7EaN8OxjLTJWqB2rc08P4LmaLh9rOG5ga4mbO79vmfu5rz1nb5y-lbL0n11Xg6y6oPsxj7IEgq--uYm0AiAKxsIxbKk="
+    }
+  },
+  "admin_report": {
+    "key_id": "key-1775761248",
+    "ciphertext": "gAAAAABp1_dhNdpXwGL1nDtHGMX_Ybi8j5grbw_lHQnoZnzUE6F-NnkofwCmP19BN4E-RZfPywqlB-uOcYhqZGlhraMfqqkjSmhO5VXDfEhwL_V44OqSVWz-NS9ZcFN5Z66x_KAxCKfAgwW76m2GganBMOCbDjU9eQ=="
+  }
+}

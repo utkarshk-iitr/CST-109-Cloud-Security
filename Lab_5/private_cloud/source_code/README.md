@@ -60,11 +60,11 @@ Client -> API Gateway -> Backend Server 1/2 (JWT + RBAC + encrypted-at-rest reco
 
 Open 5 terminals from `Lab_5/private_cloud/source_code`:
 
-1. `python3 iam_server/iam_server.py`
-2. `python3 backend_servers/backend_server.py 1 7001`
-3. `python3 backend_servers/backend_server.py 2 7002`
-4. `python3 api_gateway/api_gateway.py`
-5. `python3 client/client.py`
+1. `python3 iam_server.py`
+2. `python3 backend_server.py 1 7001`
+3. `python3 backend_server.py 2 7002`
+4. `python3 api_gateway.py`
+5. `python3 client.py`
 
 ## Suggested Screenshots for Report
 

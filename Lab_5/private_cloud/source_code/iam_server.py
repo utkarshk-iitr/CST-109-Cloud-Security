@@ -76,9 +76,9 @@ class IAMServer:
                 attempts = user["failed_attempts"]
                 auth_log.warning("LOGIN FAILED | user=%s ip=%s reason=bad_password attempt=%s",un,client_ip,attempts)
                 if attempts >= MAX_LOGIN_ATTEMPTS:
-                    user["lock_until"] = now + ACCOUNT_LOCK_SECONDS
-                    mitg_log.critical("ACCOUNT LOCKOUT | user=%s ip=%s attempts=%s lock_seconds=%s",un,client_ip,attempts,ACCOUNT_LOCK_SECONDS)
-                    return {"status": "ERROR","message": f"Account locked for {ACCOUNT_LOCK_SECONDS} seconds"}
+                    user["lock_until"] = now + LOCK_SEC
+                    mitg_log.critical("ACCOUNT LOCKOUT | user=%s ip=%s attempts=%s lock_seconds=%s",un,client_ip,attempts,LOCK_SEC)
+                    return {"status": "ERROR","message": f"Account locked for {LOCK_SEC} seconds"}
                 return {"status": "ERROR", "message": "Invalid credentials"}
 
             user["failed_attempts"] = 0
@@ -92,18 +92,18 @@ class IAMServer:
             "token": access_token,
             "refresh_token": refresh_token,
             "role": user["role"],
-            "expires_in": JWT_EXP_SECONDS,
-            "refresh_expires_in": REFRESH_EXP_SECONDS,
+            "expires_in": JWT_EXP,
+            "refresh_expires_in": REFRESH_EXP,
         }
 
     def issue_tokens(self, username, role):
-        access_token = create_jwt({"sub": username, "role": role}, JWT_SECRET, JWT_EXP_SECONDS)
+        access_token = create_jwt({"sub": username, "role": role}, JWT_SECRET, JWT_EXP)
         refresh_token = secrets.token_urlsafe(48)
         refresh_hash = hashlib.sha256(refresh_token.encode("utf-8")).hexdigest()
         self.refresh_tokens[refresh_hash] = {
             "username": username,
             "role": role,
-            "exp": int(time.time()) + REFRESH_EXP_SECONDS,
+            "exp": int(time.time()) + REFRESH_EXP,
         }
         return access_token, refresh_token
 
@@ -135,8 +135,8 @@ class IAMServer:
             "message": "Token renewed",
             "token": access_token,
             "refresh_token": new_refresh_token,
-            "expires_in": JWT_EXP_SECONDS,
-            "refresh_expires_in": REFRESH_EXP_SECONDS,
+            "expires_in": JWT_EXP,
+            "refresh_expires_in": REFRESH_EXP,
         }
 
     def handle_client(self, conn, addr):
