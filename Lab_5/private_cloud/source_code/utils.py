@@ -13,25 +13,22 @@ from cryptography.fernet import Fernet
 
 _lock = threading.Lock()
 
-
-def _atomic_write(path, payload):
+def chhota_write(path, payload):
     tmp_path = f"{path}.tmp"
     with open(tmp_path, "w", encoding="utf-8") as handle:
         json.dump(payload, handle, indent=2)
     os.replace(tmp_path, path)
 
-
-def _load_ring_from_disk():
+def load_ring():
     if not os.path.exists(KEY_RING_FILE):
         return None
     with open(KEY_RING_FILE, "r", encoding="utf-8") as handle:
         return json.load(handle)
 
-
-def initialize_key_ring():
+def init_key_ring():
     os.makedirs(SECURITY_DIR, exist_ok=True)
     with _lock:
-        ring = _load_ring_from_disk()
+        ring = load_ring()
         if ring:
             return ring
 
@@ -41,37 +38,29 @@ def initialize_key_ring():
             "keys": {key_id: Fernet.generate_key().decode("ascii")},
             "rotated_at": int(time.time()),
         }
-        _atomic_write(KEY_RING_FILE, ring)
+        chhota_write(KEY_RING_FILE, ring)
         return ring
 
-
-def _load_ring():
-    return initialize_key_ring()
-
-
 def get_active_key():
-    ring = _load_ring()
+    ring = init_key_ring()
     key_id = ring["active_key_id"]
     key = ring["keys"][key_id].encode("ascii")
     return key_id, key
 
-
 def get_key(key_id):
-    ring = _load_ring()
+    ring = init_key_ring()
     key = ring["keys"].get(key_id)
     if key is None:
         return None
     return key.encode("ascii")
 
-
 def get_all_keys():
-    ring = _load_ring()
+    ring = init_key_ring()
     return {key_id: key.encode("ascii") for key_id, key in ring["keys"].items()}
-
 
 def rotate_key():
     with _lock:
-        ring = _load_ring()
+        ring = init_key_ring()
         new_key_id = f"key-{int(time.time())}"
         ring["keys"][new_key_id] = Fernet.generate_key().decode("ascii")
         ring["active_key_id"] = new_key_id
@@ -83,13 +72,13 @@ def rotate_key():
             if to_remove != ring["active_key_id"]:
                 ring["keys"].pop(to_remove, None)
 
-        _atomic_write(KEY_RING_FILE, ring)
+        chhota_write(KEY_RING_FILE, ring)
         return new_key_id
 
-def _b64url_encode(raw_bytes):
+def b64url_enc(raw_bytes):
     return base64.urlsafe_b64encode(raw_bytes).rstrip(b"=").decode("ascii")
 
-def _b64url_decode(encoded):
+def b64url_dec(encoded):
     padding = "=" * (-len(encoded) % 4)
     return base64.urlsafe_b64decode((encoded + padding).encode("ascii"))
 
@@ -100,12 +89,12 @@ def create_jwt(payload, secret, expires_in):
     body["exp"] = now + int(expires_in)
 
     header = {"alg": "HS256", "typ": "JWT"}
-    header_b64 = _b64url_encode(json.dumps(header, separators=(",", ":")).encode("utf-8"))
-    payload_b64 = _b64url_encode(json.dumps(body, separators=(",", ":")).encode("utf-8"))
+    header_b64 = b64url_enc(json.dumps(header, separators=(",", ":")).encode("utf-8"))
+    payload_b64 = b64url_enc(json.dumps(body, separators=(",", ":")).encode("utf-8"))
 
     signing_input = f"{header_b64}.{payload_b64}".encode("ascii")
     signature = hmac.new(secret.encode("utf-8"), signing_input, hashlib.sha256).digest()
-    signature_b64 = _b64url_encode(signature)
+    signature_b64 = b64url_enc(signature)
 
     return f"{header_b64}.{payload_b64}.{signature_b64}"
 
@@ -119,12 +108,12 @@ def verify_jwt(token, secret):
         signing_input = f"{header_b64}.{payload_b64}".encode("ascii")
 
         expected = hmac.new(secret.encode("utf-8"), signing_input, hashlib.sha256).digest()
-        actual = _b64url_decode(signature_b64)
+        actual = b64url_dec(signature_b64)
 
         if not hmac.compare_digest(expected, actual):
             return False, "Invalid signature"
 
-        payload = json.loads(_b64url_decode(payload_b64).decode("utf-8"))
+        payload = json.loads(b64url_dec(payload_b64).decode("utf-8"))
         now = int(time.time())
         if now >= int(payload.get("exp", 0)):
             return False, "Token expired"
@@ -133,14 +122,13 @@ def verify_jwt(token, secret):
     except Exception:
         return False, "Invalid token"
 
-
-def build_tls_server_context():
+def build_srvr():
     context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
     context.load_cert_chain(certfile=TLS_CERT_FILE, keyfile=TLS_KEY_FILE)
     return context
 
-
-def build_tls_client_context():
+TLS_VERIFY_SERVER = False
+def build_clnt():
     context = ssl.create_default_context(ssl.Purpose.SERVER_AUTH)
     if TLS_VERIFY_SERVER:
         context.load_verify_locations(cafile=TLS_CERT_FILE)
@@ -151,13 +139,12 @@ def build_tls_client_context():
         context.verify_mode = ssl.CERT_NONE
     return context
 
-
 def open_outbound_socket(host, port, timeout=8):
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.settimeout(timeout)
     sock.connect((host, port))
 
-    client_tls = build_tls_client_context()
+    client_tls = build_clnt()
     if client_tls is not None:
         return client_tls.wrap_socket(sock, server_hostname="localhost")
     return sock

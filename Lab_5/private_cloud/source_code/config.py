@@ -22,7 +22,6 @@ BACKEND_SERVERS = [
 
 TLS_CERT_FILE = os.path.join(ROOT_DIR, "certs", "server.crt")
 TLS_KEY_FILE = os.path.join(ROOT_DIR, "certs", "server.key")
-TLS_VERIFY_SERVER = False
 KEY_RING_FILE = os.path.join(SECURITY_DIR, "keyring.json")
 KEY_RING_RETAIN = 6
 KEY_SEC = 300
@@ -36,5 +35,4 @@ LOCK_SEC = 300
 REQ_MIN = 60
 INV_THRESHOLD = 5
 UNAUTH_THRESHOLD = 3
-UNUSUAL_ACCESS_PER_MIN = 20
-
+UNUSUAL_ACCESS = 20

@@ -1,0 +1,16 @@
+{
+  "profiles": {
+    "admin": {
+      "key_id": "key-1775761248",
+      "ciphertext": "gAAAAABp2H_rRMFAAc0-Slq_WyCsW8ySg_3zNbXTMCjjGS1YswWsU3vxNsnMo9vIYJHT4e_EncWmMChuMFH6ixo02ZdEHoYdqKc0lQCQLK48hm6tj_Q1aOAvbfVudL7KJIe8goxR68f9nQMJ5YCYw9ToV6vShrw8D7z_wdmssyu2h_No3jlfB4U="
+    },
+    "user1": {
+      "key_id": "key-1775761248",
+      "ciphertext": "gAAAAABp2H_rqaaAJzBByGHtiYqIiSRbluuI07oDqzU65xUJskgLZf2rp3cRWQeUEwJJQmGUr5ZEUlc82JC0u-u5sbBxAenqN2fJmVbTFMJ91otx4zCz2nb4LB0-Bz4Q3Q66kaSDTWGAhuiHRhkGcbhEgHn8pfq0qK8QsCb0Qb_yhaFPAPpAa30="
+    }
+  },
+  "admin_report": {
+    "key_id": "key-1775761248",
+    "ciphertext": "gAAAAABp2H_rw32dodJ1LCec07RsF1sMeEfCgYS8lda2F_nvUyNi_QWkBjZjiPtUJ1KovF5ZSspkcL3xcHtNMcIbwsk8bYJVHBIEtvxtb10rZhHfHC0ywzIGrpkRRb9Oq9-Wn6ZlvZ-sK8gKjXh8BxRzBh7CchirTQ=="
+  }
+}

@@ -9,7 +9,7 @@ class Client:
         self.refresh_token = ""
         self.username = ""
         self.role = ""
-        self.last_renewed_at = 0
+        self.last_renew = 0
 
     def send(self, payload):
         try:
@@ -22,75 +22,76 @@ class Client:
             return {"status": "ERROR", "message": f"Connection error: {exc}"}
 
     def register(self):
-        username = input("Username: ").strip()
-        password = input("Password: ").strip()
+        ussr = input("Username: ").strip()
+        pw = input("Password: ").strip()
         role = input("Role (user/admin, default user): ").strip().lower() or "user"
 
-        response = self.send({"operation": "REGISTER","username": username,"password": password,"role": role})
+        response = self.send({"operation": "REGISTER","username": ussr,"password": pw,"role": role})
         print(json.dumps(response, indent=2))
 
     def login(self):
-        username = input("Username: ").strip()
-        password = input("Password: ").strip()
+        ussr = input("Username: ").strip()
+        pw = input("Password: ").strip()
 
-        response = self.send({"operation": "LOGIN","username": username,"password": password})
+        resp = self.send({"operation": "LOGIN","username": ussr,"password": pw})
 
-        if response.get("status") == "SUCCESS":
-            self.token = response.get("token", "")
-            self.refresh_token = response.get("refresh_token", "")
-            self.username = username
-            self.role = response.get("role", "")
-            self.last_renewed_at = int(time.time())
-        print(json.dumps(response, indent=2))
+        if resp.get("status") == "SUCCESS":
+            self.token = resp.get("token", "")
+            self.refresh_token = resp.get("refresh_token", "")
+            self.username = ussr
+            self.role = resp.get("role", "")
+            self.last_renew = int(time.time())
+        print(json.dumps(resp, indent=2))
 
     def renew_token(self):
         if not self.refresh_token:
             return
 
-        response = self.send({"operation": "RENEW_TOKEN", "refresh_token": self.refresh_token})
-        if response.get("status") == "SUCCESS":
-            self.token = response.get("token", self.token)
-            self.refresh_token = response.get("refresh_token", self.refresh_token)
-            self.last_renewed_at = int(time.time())
+        resp = self.send({"operation": "RENEW_TOKEN", "refresh_token": self.refresh_token})
+        if resp.get("status") == "SUCCESS":
+            self.token = resp.get("token", self.token)
+            self.refresh_token = resp.get("refresh_token", self.refresh_token)
+            self.last_renew = int(time.time())
             print("Token renewed successfully.")
+            print(json.dumps(resp, indent=2))
         else:
-            print(f"Token renew failed: {response.get('message')}")
+            print(f"Token renew failed: {resp.get('message')}")
 
-    def periodic_renew_if_needed(self):
+    def renew_again(self):
         if not self.token or not self.refresh_token:
             return
 
         now = int(time.time())
-        if now - self.last_renewed_at >= RENEW_TIME:
+        if now - self.last_renew >= RENEW_TIME:
             self.renew_token()
 
     def get_profile(self):
-        self.periodic_renew_if_needed()
-        response = self.send({"operation": "GET_PROFILE","token": self.token})
-        print(json.dumps(response, indent=2))
+        self.renew_again()
+        resp = self.send({"operation": "GET_PROFILE","token": self.token})
+        print(json.dumps(resp, indent=2))
 
     def get_admin_report(self):
-        self.periodic_renew_if_needed()
-        response = self.send({"operation": "GET_ADMIN_REPORT","token": self.token})
-        print(json.dumps(response, indent=2))
+        self.renew_again()
+        resp = self.send({"operation": "GET_ADMIN_REPORT","token": self.token})
+        print(json.dumps(resp, indent=2))
 
-    def show_encrypted_records(self):
-        self.periodic_renew_if_needed()
-        response = self.send({"operation": "SHOW_ENCRYPTED_RECORDS", "token": self.token})
-        print(json.dumps(response, indent=2))
+    def show_enc_records(self):
+        self.renew_again()
+        resp = self.send({"operation": "SHOW_ENC_REC", "token": self.token})
+        print(json.dumps(resp, indent=2))
 
     def brute_force(self):
         target_user = input("Target username (default admin): ").strip() or "admin"
         attempts = int(input("Attempts (default 10): ").strip() or "10")
 
-        passwords = ["pehla","123456","password","nawab","hello","indian","welcome","qwerty","abc123","hecker"]
+        passwords = ["ipl","pehla","123456","password","nawab","hello","indian","welcome","qwerty","abc123","hecker"]
 
         print("\nBrute-force login simulation\n")
         for idx in range(attempts):
             pwd = passwords[idx % len(passwords)]
-            response = self.send({"operation": "LOGIN","username": target_user,"password": pwd})
-            print(f"Attempt {idx + 1}: {pwd} -> {response.get('status')} | {response.get('message')}")
-            if "locked" in str(response.get("message", "")).lower():
+            resp = self.send({"operation": "LOGIN","username": target_user,"password": pwd})
+            print(f"Attempt {idx + 1}: {pwd} -> {resp.get('status')} | {resp.get('message')}")
+            if "locked" in str(resp.get("message", "")).lower():
                 print("Mitigation triggered: Account lockout is active.")
                 break
             time.sleep(0.1)
@@ -100,16 +101,9 @@ class Client:
         fake_tokens = ["invalid.token.value","abc.def.ghi","tampered.payload.signature","eyJhbGciOiJIUzI1NiJ9.invalid.sig","","expired.token.format"]
 
         for idx, token in enumerate(fake_tokens, start=1):
-            response = self.send({"operation": "GET_ADMIN_REPORT","token": token})
-            print(f"Test {idx}: token='{token[:20]}' -> {response.get('status')} | {response.get('message')}")
+            resp = self.send({"operation": "GET_ADMIN_REPORT","token": token})
+            print(f"Test {idx}: token='{token[:20]}' -> {resp.get('status')} | {resp.get('message')}")
             time.sleep(0.1)
-
-    def token_exp(self):
-        self.periodic_renew_if_needed()
-        input("Press Enter to continue and test with your current token...")
-        response = self.send({"operation": "GET_PROFILE","token": self.token})
-        print(json.dumps(response, indent=2))
-
 
 def print_menu(client):
     print("\n" + "-" * 21)
@@ -124,8 +118,7 @@ def print_menu(client):
     print("6. Renew token now")
     print("7. Attack simulation: Brute-force login")
     print("8. Attack simulation: Invalid/tampered token")
-    print("9. Token expiry demo")
-    print("10. Exit")
+    print("9. Exit")
 
 client = Client()
 
@@ -142,7 +135,7 @@ while True:
     elif choice == "4":
         client.get_admin_report()
     elif choice == "5":
-        client.show_encrypted_records()
+        client.show_enc_records()
     elif choice == "6":
         client.renew_token()
     elif choice == "7":
@@ -150,8 +143,6 @@ while True:
     elif choice == "8":
         client.inv_token()
     elif choice == "9":
-        client.token_exp()
-    elif choice == "10":
         print("Tata")
         break
     else:

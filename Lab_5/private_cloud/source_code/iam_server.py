@@ -86,25 +86,13 @@ class IAMServer:
             access_token, refresh_token = self.issue_tokens(un, user["role"])
 
         auth_log.info("LOGIN SUCCESS | user=%s role=%s ip=%s", un, user["role"], client_ip)
-        return {
-            "status": "SUCCESS",
-            "message": "Login successful",
-            "token": access_token,
-            "refresh_token": refresh_token,
-            "role": user["role"],
-            "expires_in": JWT_EXP,
-            "refresh_expires_in": REFRESH_EXP,
-        }
+        return {"status": "SUCCESS","message": "Login successful","token": access_token,"refresh_token": refresh_token,"role": user["role"],"expires_in": JWT_EXP,"refresh_expires_in": REFRESH_EXP}
 
     def issue_tokens(self, username, role):
         access_token = create_jwt({"sub": username, "role": role}, JWT_SECRET, JWT_EXP)
         refresh_token = secrets.token_urlsafe(48)
         refresh_hash = hashlib.sha256(refresh_token.encode("utf-8")).hexdigest()
-        self.refresh_tokens[refresh_hash] = {
-            "username": username,
-            "role": role,
-            "exp": int(time.time()) + REFRESH_EXP,
-        }
+        self.refresh_tokens[refresh_hash] = {"username": username,"role": role,"exp": int(time.time()) + REFRESH_EXP}
         return access_token, refresh_token
 
     def renew_token(self, request, client_ip):
@@ -130,14 +118,8 @@ class IAMServer:
             access_token, new_refresh_token = self.issue_tokens(username, role)
 
         auth_log.info("TOKEN RENEW SUCCESS | user=%s ip=%s", username, client_ip)
-        return {
-            "status": "SUCCESS",
-            "message": "Token renewed",
-            "token": access_token,
-            "refresh_token": new_refresh_token,
-            "expires_in": JWT_EXP,
-            "refresh_expires_in": REFRESH_EXP,
-        }
+        return {"status": "SUCCESS","message": "Token renewed","token": access_token,"refresh_token": new_refresh_token,
+                "expires_in": JWT_EXP,"refresh_expires_in": REFRESH_EXP}
 
     def handle_client(self, conn, addr):
         client_ip = addr[0]
@@ -166,7 +148,7 @@ class IAMServer:
         server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
         server.bind((self.host, self.port))
         server.listen(20)
-        tls_context = build_tls_server_context()
+        tls_context = build_srvr()
         app_log.info("IAM server started at %s:%s", self.host, self.port)
         if tls_context is not None:
             app_log.info("TLS enabled for IAM server")
