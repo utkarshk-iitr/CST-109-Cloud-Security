@@ -4,7 +4,7 @@ import re
 from collections import Counter
 
 ALERT_RE = re.compile(
-    r"\[\d+:\d+:\d+\]\s+(?P<msg>.*?)\s+\[\*\*\].*?\{(?P<proto>\w+)\}\s+(?P<src_ip>\d+\.\d+\.\d+\.\d+):(?P<src_port>\d+)\s+->\s+(?P<dst_ip>\d+\.\d+\.\d+\.\d+):(?P<dst_port>\d+)"
+    r"\[\d+:\d+:\d+\]\s+(?P<msg>.*?)\s+\[\*\*\].*?\{(?P<proto>\w+)\}\s+(?P<src_ip>\d+\.\d+\.\d+\.\d+)(?::(?P<src_port>\d+))?\s+->\s+(?P<dst_ip>\d+\.\d+\.\d+\.\d+)(?::(?P<dst_port>\d+))?"
 )
 
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-IFACE=${IFACE:-eth0}
+IFACE=${IFACE:-lo}
 DURATION=${DURATION:-180}
 OUT_DIR=${OUT_DIR:-./output}
 PCAP_FILE=${PCAP_FILE:-$OUT_DIR/capture.pcapng}

@@ -29,6 +29,7 @@ def list_employees():
 @app.route("/employees", methods=["POST"])
 def add_employee():
     payload = request.get_json(silent=True) or {}
+    id = int(str(payload.get("id", 0)).strip())
     name = str(payload.get("name", "")).strip()
     email = str(payload.get("email", "")).strip()
 
@@ -39,19 +40,14 @@ def add_employee():
     try:
         conn = get_db_conn()
         with conn.cursor() as cur:
-            cur.execute("INSERT INTO employees(name, email) VALUES(%s, %s)",(name, email))
-            employee_id = cur.lastrowid
+            cur.execute("INSERT INTO employees VALUES(%s,%s, %s)",(id,name, email))
 
         return jsonify({
-            "status": "SUCCESS","data": {"id": employee_id, "name": name, "email": email}}), 201
+            "status": "SUCCESS","data": {"id": id, "name": name, "email": email}}), 201
     except Exception as exc:
         return jsonify({"status": "ERROR", "message": str(exc)}), 500
     finally:
         if conn is not None:
             conn.close()
 
-if __name__ == "__main__":
-    if WEB_TLS_CERT != "" and WEB_TLS_KEY != "":
-        app.run(host=WEB_HOST, port=WEB_PORT, ssl_context=(WEB_TLS_CERT, WEB_TLS_KEY))
-    else:
-        app.run(host=WEB_HOST, port=WEB_PORT)
+app.run(host=WEB_HOST, port=WEB_PORT)

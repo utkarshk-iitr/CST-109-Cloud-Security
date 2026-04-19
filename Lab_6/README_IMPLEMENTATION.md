@@ -1,8 +1,7 @@
 CST-109 Assignment 6 Implementation
 
 Directory Map
-- source_code/task1_three_tier: 3-tier web and database access code
-- source_code/task1_firewall: iptables least-privilege rules
+- source_code/task1: 3-tier app and firewall scripts
 - source_code/task2_ids: Snort custom rules and attack scripts
 - source_code/task3_siem: ELK ingestion pipeline and analysis utilities
 - source_code/task4_traffic: capture and analysis script for Wireshark/tshark task
@@ -21,39 +20,27 @@ Step 1: Database Setup on Localhost
 2. sudo apt install -y mysql-server
 3. sudo systemctl enable --now mysql
 4. sudo mysql -e "CREATE DATABASE IF NOT EXISTS cloud_security;"
-5. sudo mysql -e "CREATE USER IF NOT EXISTS 'cloud_user'@'127.0.0.1' IDENTIFIED BY 'cloud_pass_123';"
-6. sudo mysql -e "GRANT ALL PRIVILEGES ON cloud_security.* TO 'cloud_user'@'127.0.0.1'; FLUSH PRIVILEGES;"
+5. sudo mysql -e "CREATE USER IF NOT EXISTS 'cst_user'@'127.0.0.1' IDENTIFIED BY 'cst_109';"
+6. sudo mysql -e "GRANT ALL PRIVILEGES ON cloud_security.* TO 'cst_user'@'127.0.0.1'; FLUSH PRIVILEGES;"
 
 Step 2: Web and DB Init on Localhost
-1. cd Lab_6/source_code/task1_three_tier
-2. python3 -m venv .venv
-3. source .venv/bin/activate
-4. pip install -r requirements.txt
-5. If your venv was created before this update, run: pip install cryptography
-6. export WEB_HOST=127.0.0.1
-7. export WEB_PORT=8080
-8. export DB_HOST=127.0.0.1
-9. export DB_PORT=3306
-10. export DB_USER=cloud_user
-11. export DB_PASSWORD=cloud_pass_123
-12. export DB_NAME=cloud_security
+1. cd Lab_6/source_code/task1
 13. python3 db_init.py
 14. python3 web_server.py
 
 Step 3: Validate Localhost 3-Tier Access
 1. Open another terminal
-2. cd Lab_6/source_code/task1_three_tier
-3. source .venv/bin/activate
-4. python3 client.py --base-url http://127.0.0.1:8080 --mode web-list
-5. python3 client.py --base-url http://127.0.0.1:8080 --mode web-add --name test1 --email test1@example.com
-6. python3 client.py --base-url http://127.0.0.1:8080 --mode direct-db-test --db-host 127.0.0.1 --db-port 3306
+2. cd Lab_6/source_code/task1
+4. python3 client.py --mode web-list
+5. python3 client.py --mode web-add
+6. python3 client.py --mode direct-db-test
 
 Step 4: Optional Local Firewall Script Run
-1. cd Lab_6/source_code/task1_firewall
+1. cd Lab_6/source_code/task1
 2. sudo WEB_IP=127.0.0.1 ./client_firewall.sh
 3. sudo CLIENT_NET=127.0.0.1/32 ADMIN_IP=127.0.0.1 DB_IP=127.0.0.1 WEB_HTTP_PORT=8080 WEB_HTTPS_PORT=8443 DB_PORT=3306 ./web_firewall.sh
 4. sudo WEB_IP=127.0.0.1 ADMIN_IP=127.0.0.1 DB_PORT=3306 ./db_firewall.sh
-5. DB_IP=127.0.0.1 WEB_IP=127.0.0.1 DB_PORT=3306 ./risk_validation.sh
+5. DB_IP=127.0.0.1 WEB_IP=127.0.0.1 WEB_HTTP_PORT=8080 WEB_HTTPS_PORT=8443 DB_PORT=3306 ./risk_validation.sh
 
 Note for Localhost Mode
 - With all components on one host, strict identity-based separation between client process and web process using only IP source is limited.
@@ -62,7 +49,7 @@ Note for Localhost Mode
 Expected Result
 - Web API access works on 127.0.0.1:8080
 - Client can access DB through the web API flow
-- Direct client to DB connectivity test is available from client.py
+- Direct client to DB on localhost may still succeed because all processes share one host network
 
 Task 2: IDS with Snort
 
@@ -133,4 +120,4 @@ Submission Evidence Checklist
 - Place logs in Lab_6/logs and screenshots in Lab_6/screenshots
 
 Reset Commands
-- To clear firewall policy on a node: sudo Lab_6/source_code/task1_firewall/reset_firewall.sh
+- To clear firewall policy on a node: sudo Lab_6/source_code/task1/reset_firewall.sh

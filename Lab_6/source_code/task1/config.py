@@ -1,0 +1,7 @@
+WEB_HOST = "127.0.0.1"
+WEB_PORT = "8080"
+DB_HOST = "127.0.0.1"
+DB_PORT = "3306"
+DB_USER = "cst_user"
+DB_PASSWORD = "cst_109"
+DB_NAME = "cloud_security"
