@@ -53,18 +53,20 @@ Expected Result
 
 Task 2: IDS with Snort
 
-Step 1: Install and Configure Snort on Localhost
+Step 1: Install and Configure Snort on Server (10.81.12.36)
 1. cd Lab_6/source_code/task2_ids/scripts
 2. ./install_snort_ubuntu.sh
 3. sudo cp ../snort/local.rules /etc/snort/rules/local.rules
-4. sudo grep -q "include \$RULE_PATH/local.rules" /etc/snort/snort.conf || echo "include \$RULE_PATH/local.rules" | sudo tee -a /etc/snort/snort.conf > /dev/null
+4. sudo cp ../snort/snort_local_include.conf /etc/snort/snort_local_include.conf
+5. sudo grep -q "include /etc/snort/snort_local_include.conf" /etc/snort/snort.conf || echo "include /etc/snort/snort_local_include.conf" | sudo tee -a /etc/snort/snort.conf > /dev/null
+6. sudo sed -i 's/^include \$RULE_PATH\/local.rules/# include \$RULE_PATH\/local.rules/' /etc/snort/snort.conf
 
 Step 2: Start Snort in NIDS Mode
-1. sudo snort -i lo -A fast -q -c /etc/snort/snort.conf -l /var/log/snort
+1. sudo snort -i eth0 -A fast -q -c /etc/snort/snort.conf -l /var/log/snort
 
-Step 3: Trigger Controlled Attacks on Localhost
+Step 3: Trigger Controlled Attacks from Client (10.81.35.164)
 1. cd Lab_6/source_code/task2_ids/scripts
-2. TARGET_IP=127.0.0.1 ./trigger_attacks.sh
+2. TARGET_IP=10.81.12.36 SSH_PORT=22 ./trigger_attacks.sh
 
 Step 4: Build Alert Summary
 1. cd Lab_6/source_code/task2_ids/scripts

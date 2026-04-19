@@ -1,0 +1,34 @@
+PORT_SCAN=1
+ICMP_FLOOD=1
+SSH_BRUTE_FORCE=0
+LATEST_ALERTS
+04/19-14:27:31.605385  [**] [1:527:8] BAD-TRAFFIC same SRC/DST [**] [Classification: Potentially Bad Traffic] [Priority: 2] {ICMP} 10.81.12.36 -> 10.81.12.36
+04/19-14:27:31.605385  [**] [1:469:3] ICMP PING NMAP [**] [Classification: Attempted Information Leak] [Priority: 2] {ICMP} 10.81.12.36 -> 10.81.12.36
+04/19-14:27:31.605417  [**] [1:527:8] BAD-TRAFFIC same SRC/DST [**] [Classification: Potentially Bad Traffic] [Priority: 2] {ICMP} 10.81.12.36 -> 10.81.12.36
+04/19-14:27:31.606516  [**] [1:527:8] BAD-TRAFFIC same SRC/DST [**] [Classification: Potentially Bad Traffic] [Priority: 2] {ICMP} 10.81.12.36 -> 10.81.12.36
+04/19-14:27:31.606516  [**] [1:469:3] ICMP PING NMAP [**] [Classification: Attempted Information Leak] [Priority: 2] {ICMP} 10.81.12.36 -> 10.81.12.36
+04/19-14:27:31.606536  [**] [1:527:8] BAD-TRAFFIC same SRC/DST [**] [Classification: Potentially Bad Traffic] [Priority: 2] {ICMP} 10.81.12.36 -> 10.81.12.36
+04/19-14:27:31.607604  [**] [1:527:8] BAD-TRAFFIC same SRC/DST [**] [Classification: Potentially Bad Traffic] [Priority: 2] {ICMP} 10.81.12.36 -> 10.81.12.36
+04/19-14:27:31.607604  [**] [1:469:3] ICMP PING NMAP [**] [Classification: Attempted Information Leak] [Priority: 2] {ICMP} 10.81.12.36 -> 10.81.12.36
+04/19-14:27:31.607619  [**] [1:527:8] BAD-TRAFFIC same SRC/DST [**] [Classification: Potentially Bad Traffic] [Priority: 2] {ICMP} 10.81.12.36 -> 10.81.12.36
+04/19-14:27:31.608709  [**] [1:527:8] BAD-TRAFFIC same SRC/DST [**] [Classification: Potentially Bad Traffic] [Priority: 2] {ICMP} 10.81.12.36 -> 10.81.12.36
+04/19-14:27:31.608709  [**] [1:469:3] ICMP PING NMAP [**] [Classification: Attempted Information Leak] [Priority: 2] {ICMP} 10.81.12.36 -> 10.81.12.36
+04/19-14:27:31.608728  [**] [1:527:8] BAD-TRAFFIC same SRC/DST [**] [Classification: Potentially Bad Traffic] [Priority: 2] {ICMP} 10.81.12.36 -> 10.81.12.36
+04/19-14:27:31.609822  [**] [1:527:8] BAD-TRAFFIC same SRC/DST [**] [Classification: Potentially Bad Traffic] [Priority: 2] {ICMP} 10.81.12.36 -> 10.81.12.36
+04/19-14:27:31.609822  [**] [1:469:3] ICMP PING NMAP [**] [Classification: Attempted Information Leak] [Priority: 2] {ICMP} 10.81.12.36 -> 10.81.12.36
+04/19-14:27:31.609841  [**] [1:527:8] BAD-TRAFFIC same SRC/DST [**] [Classification: Potentially Bad Traffic] [Priority: 2] {ICMP} 10.81.12.36 -> 10.81.12.36
+04/19-14:27:31.611571  [**] [1:527:8] BAD-TRAFFIC same SRC/DST [**] [Classification: Potentially Bad Traffic] [Priority: 2] {ICMP} 10.81.12.36 -> 10.81.12.36
+04/19-14:27:31.611571  [**] [1:469:3] ICMP PING NMAP [**] [Classification: Attempted Information Leak] [Priority: 2] {ICMP} 10.81.12.36 -> 10.81.12.36
+04/19-14:27:31.611606  [**] [1:527:8] BAD-TRAFFIC same SRC/DST [**] [Classification: Potentially Bad Traffic] [Priority: 2] {ICMP} 10.81.12.36 -> 10.81.12.36
+04/19-14:27:31.612705  [**] [1:527:8] BAD-TRAFFIC same SRC/DST [**] [Classification: Potentially Bad Traffic] [Priority: 2] {ICMP} 10.81.12.36 -> 10.81.12.36
+04/19-14:27:31.612705  [**] [1:469:3] ICMP PING NMAP [**] [Classification: Attempted Information Leak] [Priority: 2] {ICMP} 10.81.12.36 -> 10.81.12.36
+04/19-14:27:31.612725  [**] [1:527:8] BAD-TRAFFIC same SRC/DST [**] [Classification: Potentially Bad Traffic] [Priority: 2] {ICMP} 10.81.12.36 -> 10.81.12.36
+04/19-14:27:31.613793  [**] [1:527:8] BAD-TRAFFIC same SRC/DST [**] [Classification: Potentially Bad Traffic] [Priority: 2] {ICMP} 10.81.12.36 -> 10.81.12.36
+04/19-14:27:31.613793  [**] [1:469:3] ICMP PING NMAP [**] [Classification: Attempted Information Leak] [Priority: 2] {ICMP} 10.81.12.36 -> 10.81.12.36
+04/19-14:27:31.613806  [**] [1:527:8] BAD-TRAFFIC same SRC/DST [**] [Classification: Potentially Bad Traffic] [Priority: 2] {ICMP} 10.81.12.36 -> 10.81.12.36
+04/19-14:27:31.614954  [**] [1:527:8] BAD-TRAFFIC same SRC/DST [**] [Classification: Potentially Bad Traffic] [Priority: 2] {ICMP} 10.81.12.36 -> 10.81.12.36
+04/19-14:27:31.614954  [**] [1:469:3] ICMP PING NMAP [**] [Classification: Attempted Information Leak] [Priority: 2] {ICMP} 10.81.12.36 -> 10.81.12.36
+04/19-14:27:31.614986  [**] [1:527:8] BAD-TRAFFIC same SRC/DST [**] [Classification: Potentially Bad Traffic] [Priority: 2] {ICMP} 10.81.12.36 -> 10.81.12.36
+04/19-14:27:31.616562  [**] [1:527:8] BAD-TRAFFIC same SRC/DST [**] [Classification: Potentially Bad Traffic] [Priority: 2] {ICMP} 10.81.12.36 -> 10.81.12.36
+04/19-14:27:31.616562  [**] [1:469:3] ICMP PING NMAP [**] [Classification: Attempted Information Leak] [Priority: 2] {ICMP} 10.81.12.36 -> 10.81.12.36
+04/19-14:27:31.616594  [**] [1:527:8] BAD-TRAFFIC same SRC/DST [**] [Classification: Potentially Bad Traffic] [Priority: 2] {ICMP} 10.81.12.36 -> 10.81.12.36
