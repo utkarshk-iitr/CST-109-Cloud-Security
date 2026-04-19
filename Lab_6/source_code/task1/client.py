@@ -2,6 +2,7 @@ import argparse
 import json
 import socket
 import requests
+from config import *
 
 def web_list(base_url):
     response = requests.get(f"{base_url}/employees", timeout=8)
@@ -30,13 +31,13 @@ def run():
     args = parser.parse_args()
 
     if args.mode == "web-list":
-        web_list("http://127.0.0.1:8080")
+        web_list(f"http://{WEB_HOST}:{WEB_PORT}")
     elif args.mode == "web-add":
         id = int(input("Enter ID: "))
         name = input("Enter name: ")
         email = input("Enter email: ")
-        web_add("http://127.0.0.1:8080", id,name, email)
+        web_add(f"http://{WEB_HOST}:{WEB_PORT}", id,name, email)
     elif args.mode == "direct-db-test":
-        direct_db_test("127.0.0.1", 3306)
+        direct_db_test(DB_HOST, DB_PORT)
 
 run()
