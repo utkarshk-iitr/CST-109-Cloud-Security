@@ -1,0 +1,12 @@
+filebeat.inputs:
+- type: filestream
+  id: snort-alert
+  enabled: true
+  paths:
+    - /var/log/snort/snort.alert.fast
+  fields:
+    log_type: snort_alert
+  fields_under_root: true
+
+output.logstash:
+  hosts: ["10.81.12.36:5044"]

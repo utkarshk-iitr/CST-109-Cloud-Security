@@ -1,0 +1,17 @@
+{
+  "threat_type_frequency": {
+    "WEB-MISC Invalid HTTP Version String": 37,
+    "ICMP PING NMAP": 485,
+    "SNMP request tcp": 5,
+    "SNMP trap tcp": 5,
+    "SNMP AgentX/tcp request": 5
+  },
+  "source_ip_frequency": {
+    "10.81.12.36": 37,
+    "10.81.35.164": 500
+  },
+  "protocol_frequency": {
+    "TCP": 52,
+    "ICMP": 485
+  }
+}
