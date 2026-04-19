@@ -18,4 +18,5 @@ iptables -A INPUT -p tcp --dport 3306 -j DROP
 iptables -A INPUT -p tcp --dport 22 -j DROP
 iptables -A OUTPUT -p tcp --dport 21 -j DROP
 iptables -A OUTPUT -p tcp --dport 25 -j DROP
+iptables -A INPUT -p icmp -j ACCEPT
 iptables -A OUTPUT -p icmp -j ACCEPT

@@ -3,8 +3,7 @@ set -e
 
 TARGET_IP=10.81.12.36
 SSH_USER=invaliduser
-SSH_PORT=22
 
 sudo nmap -sS -p 1-1024 "$TARGET_IP"
-sudo hping3 --icmp -i u1000 -c 120 "$TARGET_IP"
-for i in $(seq 1 12); do ssh -p "$SSH_PORT" -o StrictHostKeyChecking=no -o ConnectTimeout=2 "$SSH_USER@$TARGET_IP" "exit" || true; done
+sudo nping --icmp --rate 1000 -c 120 "$TARGET_IP"
+for i in $(seq 1 12); do ssh -p 22 -o StrictHostKeyChecking=no -o ConnectTimeout=2 "$SSH_USER@$TARGET_IP" "exit" || true; done

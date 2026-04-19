@@ -2,7 +2,7 @@
 set -e
 
 ALERT_FILE=${ALERT_FILE:-/var/log/snort/alert}
-OUT_FILE=${OUT_FILE:-./ids_alert_summary.txt}
+OUT_FILE=${OUT_FILE:-../../logs/ids.txt}
 
 if [ ! -f "$ALERT_FILE" ]; then
   echo "alert file not found: $ALERT_FILE"
@@ -18,7 +18,5 @@ SSH_BRUTE=$(grep -c "CST109 SSH BRUTE FORCE" "$ALERT_FILE" || true)
   echo "ICMP_FLOOD=$ICMP_FLOOD"
   echo "SSH_BRUTE_FORCE=$SSH_BRUTE"
   echo "LATEST_ALERTS"
-  tail -n 30 "$ALERT_FILE"
+  cat "$ALERT_FILE"
 } > "$OUT_FILE"
-
-cat "$OUT_FILE"
