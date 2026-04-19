@@ -2,7 +2,7 @@ import pymysql
 from config import *
 
 def init_db():
-    conn = pymysql.connect(host=DB_HOST,port=DB_PORT,user=DB_USER,password=DB_PASSWORD,cursorclass=pymysql.cursors.DictCursor,autocommit=True)
+    conn = pymysql.connect(host="127.0.0.1",port=3306,user=DB_USER,password=DB_PASSWORD,cursorclass=pymysql.cursors.DictCursor,autocommit=True)
 
     with conn.cursor() as cur:
         cur.execute(f"CREATE DATABASE IF NOT EXISTS {DB_NAME}")

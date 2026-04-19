@@ -5,7 +5,7 @@ from config import *
 app = Flask(__name__)
 
 def get_db_conn():
-    return pymysql.connect(host=DB_HOST,port=DB_PORT,user=DB_USER,password=DB_PASSWORD,database=DB_NAME,cursorclass=pymysql.cursors.DictCursor,autocommit=True)
+    return pymysql.connect(host="127.0.0.1",port=3306,user=DB_USER,password=DB_PASSWORD,database=DB_NAME,cursorclass=pymysql.cursors.DictCursor,autocommit=True)
 
 @app.route("/health", methods=["GET"])
 def health():
